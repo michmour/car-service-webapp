@@ -1,4 +1,4 @@
-package com.carservice.carservice.model;
+package com.carservice.carservice.models;
 
 
 import javax.persistence.*;

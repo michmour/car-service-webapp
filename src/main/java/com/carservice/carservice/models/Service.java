@@ -1,14 +1,13 @@
-package com.carservice.carservice.model;
+package com.carservice.carservice.models;
 
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Set;
 
 @Entity
-@Table(name="service")
+@Table(name="services")
 public class Service implements Serializable {
 
     @Id
