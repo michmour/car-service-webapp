@@ -13,7 +13,7 @@ public interface ServiceRepository extends JpaRepository<Service, Long> {
 
     List<Service> findAll();
 
-    List<Service> findOne(@Param("serviceid")long serviceid);
+   // List<Service> findOne(@Param("serviceid")long serviceid);
 
     Service save(Service service);
 

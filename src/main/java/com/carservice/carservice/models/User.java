@@ -1,12 +1,18 @@
 package com.carservice.carservice.models;
 
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
-@Entity
+    @Entity
     @Table(name="user")
+    @EntityListeners(AuditingEntityListener.class)
     public class User implements Serializable {
 
         @Id
@@ -35,12 +41,24 @@ import java.util.Set;
         @Column(name = "usertype")
         private int usertype;
 
+        @Column(name = "createdAt",nullable = false, updatable = false)
+        @Temporal(TemporalType.TIMESTAMP)
+        @CreatedDate
+        private Date createdAt;
+
+        @Column(name = "updatedAt", nullable = false)
+        @Temporal(TemporalType.TIMESTAMP)
+        @LastModifiedDate
+        private Date updatedAt;
+
+        @OneToMany(mappedBy="userid",targetEntity= Service.class)
+        private Set<Service>servicescollection;
 
         public User() {
 
         }
 
-        public User(long userid, int ssn, String name, String surname, String address, String email, String password, int usertype, User order) {
+        public User(long userid, int ssn, String name, String surname, String address, String email, String password, int usertype, User order, Date createdAt, Date updatedAt, Set<Service> servicescollection) {
             this.userid = userid;
             this.ssn = ssn;
             this.name = name;
@@ -49,14 +67,17 @@ import java.util.Set;
             this.email = email;
             this.password = password;
             this.usertype = usertype;
+            this.createdAt = createdAt;
+            this.updatedAt = updatedAt;
+            this.servicescollection = servicescollection;
         }
+
 
 
 //        @OneToMany(mappedBy="userid",targetEntity= Vehicle.class)
 //        private Set<Vehicle> vehiclescollection;
 
-        @OneToMany(mappedBy="userid",targetEntity= Service.class)
-        private Set<Service>servicescollection;
+
 
 
     public long getUserid() {
@@ -123,4 +144,27 @@ import java.util.Set;
             this.usertype = usertype;
         }
 
+        public Date getCreatedAt() {
+            return createdAt;
+        }
+
+        public void setCreatedAt(Date createdAt) {
+            this.createdAt = createdAt;
+        }
+
+        public Date getUpdatedAt() {
+            return updatedAt;
+        }
+
+        public void setUpdatedAt(Date updatedAt) {
+            this.updatedAt = updatedAt;
+        }
+
+        public Set<Service> getServicescollection() {
+            return servicescollection;
+        }
+
+        public void setServicescollection(Set<Service> servicescollection) {
+            this.servicescollection = servicescollection;
+        }
     }
