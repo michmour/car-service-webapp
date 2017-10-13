@@ -8,12 +8,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public class UserServiceImpl {
+
 
 
     @Service
     @Transactional
-    public class BookServiceImpl implements UserService {
+    public class UserServiceImpl implements UserService {
 
         @Autowired
         private UserRepository userRepository;
@@ -25,8 +25,8 @@ public class UserServiceImpl {
         }
 
         @Override
-        public void save(User user) {
+        public User save(User user) { return
             userRepository.save(user);
         }
     }
-}
+

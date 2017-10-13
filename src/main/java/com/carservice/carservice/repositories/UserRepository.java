@@ -10,8 +10,8 @@ import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 
-    @Repository
-   // @RepositoryRestResource(collectionResourceRel = "user", path = "user")
+  //  @Repository
+   @RepositoryRestResource(collectionResourceRel = "user", path = "user")
     public interface UserRepository extends JpaRepository<User, Long> {
 
        // List<User> findByLastName(@Param("name") String name);
