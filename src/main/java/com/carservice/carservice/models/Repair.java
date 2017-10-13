@@ -11,8 +11,8 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
-@Table(name="services")
-public class Service implements Serializable {
+@Table(name="repair")
+public class Repair implements Serializable {
 
     @Id
     @Column(name = "serviceid", nullable = false)
@@ -50,7 +50,7 @@ public class Service implements Serializable {
     @JoinColumn(name="userid",referencedColumnName= "userid")
     private User userid;
 
-    public Service() {
+    public Repair() {
 
     }
 
@@ -60,7 +60,7 @@ public class Service implements Serializable {
 
 
 
-    public Service(long serviceid, Timestamp servicedate, int status, int type, String servicecost, String details, Date createdAt, Date updatedAt, User userid) {
+    public Repair(long serviceid, Timestamp servicedate, int status, int type, String servicecost, String details, Date createdAt, Date updatedAt, User userid) {
         this.serviceid = serviceid;
         this.servicedate = servicedate;
         this.status = status;

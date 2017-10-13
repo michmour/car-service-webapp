@@ -51,14 +51,14 @@ import java.util.Set;
         @LastModifiedDate
         private Date updatedAt;
 
-        @OneToMany(mappedBy="userid",targetEntity= Service.class)
-        private Set<Service>servicescollection;
+        @OneToMany(mappedBy="userid",targetEntity= Repair.class)
+        private Set<Repair>servicescollection;
 
         public User() {
 
         }
 
-        public User(long userid, int ssn, String name, String surname, String address, String email, String password, int usertype, User order, Date createdAt, Date updatedAt, Set<Service> servicescollection) {
+        public User(long userid, int ssn, String name, String surname, String address, String email, String password, int usertype, User order, Date createdAt, Date updatedAt, Set<Repair> servicescollection) {
             this.userid = userid;
             this.ssn = ssn;
             this.name = name;
@@ -160,11 +160,11 @@ import java.util.Set;
             this.updatedAt = updatedAt;
         }
 
-        public Set<Service> getServicescollection() {
+        public Set<Repair> getServicescollection() {
             return servicescollection;
         }
 
-        public void setServicescollection(Set<Service> servicescollection) {
+        public void setServicescollection(Set<Repair> servicescollection) {
             this.servicescollection = servicescollection;
         }
     }
