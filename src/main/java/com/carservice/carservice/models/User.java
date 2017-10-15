@@ -58,7 +58,7 @@ import java.util.Set;
 
         }
 
-        public User(long userid, int ssn, String name, String surname, String address, String email, String password, int usertype, User order, Date createdAt, Date updatedAt, Set<Repair> servicescollection) {
+        public User(long userid, int ssn, String name, String surname, String address, String email, String password, int usertype, Date createdAt, Date updatedAt, Set<Repair> servicescollection) {
             this.userid = userid;
             this.ssn = ssn;
             this.name = name;

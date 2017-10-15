@@ -9,9 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 
-
-
-    @Service
+@Service
     @Transactional
     public class UserServiceImpl implements UserService {
 
@@ -23,6 +21,9 @@ import java.util.List;
         public List<User> findAll() {
             return userRepository.findAll();
         }
+
+        @Override
+        public List<User> findOne(long userid){ return userRepository.findOne(userid);}
 
         @Override
         public User save(User user) { return
