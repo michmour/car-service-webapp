@@ -1,6 +1,6 @@
-package com.carservice.carservice.services;
+package com.carservice.carservice.Services;
 
-import com.carservice.carservice.models.User;
+import com.carservice.carservice.Domain.User;
 
 import java.util.List;
 

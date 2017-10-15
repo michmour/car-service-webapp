@@ -1,7 +1,7 @@
-package com.carservice.carservice.services;
+package com.carservice.carservice.Services;
 
-import com.carservice.carservice.models.User;
-import com.carservice.carservice.repositories.UserRepository;
+import com.carservice.carservice.Domain.User;
+import com.carservice.carservice.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

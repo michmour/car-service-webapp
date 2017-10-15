@@ -1,4 +1,4 @@
-package com.carservice.carservice.models;
+package com.carservice.carservice.Domain;
 
 
 import org.springframework.data.annotation.CreatedDate;

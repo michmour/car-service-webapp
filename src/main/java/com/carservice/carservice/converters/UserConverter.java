@@ -1,7 +1,7 @@
-package com.carservice.carservice.converters;
+package com.carservice.carservice.Converters;
 
-import com.carservice.carservice.models.User;
-import com.carservice.carservice.forms.RegistrationForm;
+import com.carservice.carservice.Domain.User;
+import com.carservice.carservice.Models.RegistrationForm;
 
 
 public class UserConverter {

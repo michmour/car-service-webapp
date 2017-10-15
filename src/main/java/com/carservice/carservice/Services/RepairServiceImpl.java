@@ -1,7 +1,7 @@
-package com.carservice.carservice.services;
+package com.carservice.carservice.Services;
 
-import com.carservice.carservice.models.Repair;
-import com.carservice.carservice.repositories.RepairRepository;
+import com.carservice.carservice.Domain.Repair;
+import com.carservice.carservice.Repositories.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

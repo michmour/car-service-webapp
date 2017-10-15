@@ -1,17 +1,16 @@
-package com.carservice.carservice.repositories;
+package com.carservice.carservice.Repositories;
 
-import com.carservice.carservice.models.User;
+import com.carservice.carservice.Domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 
     @Repository
-   //@RepositoryRestResource(collectionResourceRel = "user", path = "user")
+
+   // @RepositoryRestResource(collectionResourceRel = "user", path = "user")
+
     public interface UserRepository extends JpaRepository<User, Long> {
 
        // List<User> findByLastName(@Param("name") String name);

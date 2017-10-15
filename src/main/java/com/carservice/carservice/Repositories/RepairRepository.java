@@ -1,8 +1,7 @@
-package com.carservice.carservice.repositories;
+package com.carservice.carservice.Repositories;
 
-import com.carservice.carservice.models.Repair;
+import com.carservice.carservice.Domain.Repair;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
