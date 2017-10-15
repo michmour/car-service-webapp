@@ -25,7 +25,7 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
-    public Repair save(Repair repair) { return
+    public void save(Repair repair) {
             repairRepository.save(repair);
     }
 }

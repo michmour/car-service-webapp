@@ -11,5 +11,5 @@ public interface UserService {
 
     List<User> findOne(long userid);
 
-    User save(User user);
+    void save(User user);
 }

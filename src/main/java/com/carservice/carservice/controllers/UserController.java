@@ -23,8 +23,8 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public User save(@Valid @RequestBody User user) {
-        return userService.save(user);
+    public void add(@RequestBody User user) {
+
     }
 
 //    @GetMapping("/get/{id}")

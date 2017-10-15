@@ -11,5 +11,5 @@ public interface RepairService {
 
     List<Repair> findAll();
 
-    Repair save(Repair repair);
+    void save(Repair repair);
 }
