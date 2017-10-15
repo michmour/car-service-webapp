@@ -4,6 +4,7 @@ import com.carservice.carservice.models.User;
 import com.carservice.carservice.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -17,11 +18,18 @@ public class UserController {
     private UserService userService;
 
 
+//    @GetMapping("/users")
+//    public List<User> findAll() {
+//        return userService.findAll();
+//    }
     @GetMapping("/users")
-    public List<User> findAll() {
-        return userService.findAll();
-    }
+    public String users(Model model) {
 
+        List<User> usersList= userService.findAll();
+        model.addAttribute("users", usersList);
+
+        return "index";
+    }
     @PostMapping("/users")
     public void add(@RequestBody User user) {
 
