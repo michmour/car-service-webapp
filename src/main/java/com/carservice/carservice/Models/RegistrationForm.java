@@ -33,7 +33,7 @@ public class RegistrationForm {
     @Size(min = PASSWORD_MINSIZE, message = "{register.password.size}")
     private String password;
 
-
+    private String userid;
 
     @Pattern(regexp = MAIL_PATTERN, message = "{register.email.invalid}")
     private String email;
@@ -94,5 +94,13 @@ public class RegistrationForm {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 }

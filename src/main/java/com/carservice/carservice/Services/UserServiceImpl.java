@@ -26,6 +26,9 @@ import java.util.List;
         public List<User> findOne(long userid){ return userRepository.findOne(userid);}
 
         @Override
+        public String findNameById (Long userid){ return userRepository.findNameById(userid);}
+
+        @Override
         public void save(User user) {
             userRepository.save(user);
         }

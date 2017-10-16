@@ -3,6 +3,7 @@
 
 <body>
    <table>
+<h1> ${msg!""}</h1>
 <#if users??>
      <tr>
        <th>ID</th>

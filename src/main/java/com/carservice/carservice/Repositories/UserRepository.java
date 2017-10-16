@@ -2,6 +2,8 @@ package com.carservice.carservice.Repositories;
 
 import com.carservice.carservice.Domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,6 +21,8 @@ import java.util.List;
 
         List<User> findOne(long userid);
 
+        @Query("SELECT name FROM User WHERE userid = :userid")
+        String findNameById(@Param("userid") Long userid);
 
         User save(User user);
     }

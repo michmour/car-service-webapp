@@ -29,6 +29,13 @@ public class UserController {
 //    public List<User> findAll() {
 //        return userService.findAll();
 //    }
+
+//    @PostMapping("/users/update")
+//    public String updateUser(Model model, @ModelAttribute(REGISTER_FORM)RegistrationForm registrationForm){
+//        model.addAttribute("msg",registrationForm.getName());
+//        return "index";
+//    }
+
     @GetMapping("/users")
     public String usersIndex(Model model) {
 
@@ -46,8 +53,16 @@ public class UserController {
 
     @GetMapping("/users/{id}/edit")
     public String userEditForm(Model model,@PathVariable(value = "id") Long userid ) {
-        model.addAttribute("user", userid);
-        model.addAttribute(REGISTER_FORM, new RegistrationForm());
+       // model.addAttribute("user", userid);
+
+        String name=  userService.findNameById(userid);
+
+        RegistrationForm registrationForm =new RegistrationForm();
+        registrationForm.setName(name);
+        registrationForm.setSurname("surname");
+        registrationForm.setUserid(String.valueOf(userid));
+
+        model.addAttribute(REGISTER_FORM, registrationForm);
         return "updateUser";
     }
 
@@ -83,13 +98,13 @@ public class UserController {
 
     }
 
-    @PutMapping("/users/{id}/")
+    @PostMapping("/users/update")
     public String updateUser(@Valid @ModelAttribute(REGISTER_FORM)RegistrationForm registrationForm,
                           BindingResult bindingResult, HttpSession session,
                           RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
-            return "updateUser";
+            return "index";
         }
 
         //here we would have the logic for sending the registration request  to our service

@@ -11,5 +11,7 @@ public interface UserService {
 
     List<User> findOne(long userid);
 
+    String findNameById(Long userid);
+
     void save(User user);
 }

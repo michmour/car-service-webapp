@@ -1,16 +1,16 @@
 <#import "/spring.ftl" as spring/>
 
 <div class="container">
-<#if user??>
 
-    <form action="/users/${user}" method="post" id="registrationForm" name="updateUser">
-</#if>
-    <input type="hidden" name="_method" value="PUT"/>
+    <form action="/users/update" method="post"
+       id= "registrationForm" name="updateUser">
+
+
         <label for="name">First Name</label>
-        <input type="text" name="name" id="name" placeholder="name"/>
+        <input type="text" name="name" id="name" value="${registrationForm.name}" placeholder="name"/>
 
         <label for="surname">Last Name</label>
-        <input type="text" name="surname" id="name" placeholder="surname"/>
+        <input type="text" name="surname" id="name"  value=${"surname"} placeholder="surname"/>
 
         <label for="email">Email</label>
         <input type="email" name="email" id="email" placeholder="email"/>
@@ -26,6 +26,8 @@
 
         <label for="usertype">Usertype</label>
         <input type="text" name="usertype" id="usertype" placeholder="usertype"/>
+
+        <input type="hidden" name="userid" value="${registrationForm.userid}"/>
 
         <button type="submit">Edit</button>
     </form>
