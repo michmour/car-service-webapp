@@ -29,6 +29,21 @@ import java.util.List;
         public String findNameById (Long userid){ return userRepository.findNameById(userid);}
 
         @Override
+        public String findSurnameById(Long userid){ return userRepository.findSurnameById(userid);}
+
+        @Override
+        public String findEmailById(Long userid){ return userRepository.findEmailById(userid);}
+
+        @Override
+        public String findPasswordById(Long userid){ return userRepository.findPasswordById(userid);}
+
+        @Override
+        public String findSsnById(Long userid){ return userRepository.findSsnById(userid);}
+
+        @Override
+        public String findAddressById(Long userid){ return userRepository.findAddressById(userid);}
+
+        @Override
         public void save(User user) {
             userRepository.save(user);
         }

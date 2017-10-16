@@ -19,7 +19,7 @@ public class RegistrationForm {
     private static final int PASSWORD_MINSIZE = 6;
 
     private int usertype;
-    private int ssn;
+    private String ssn;
     private String address;
 
     @Pattern(regexp = CHARACTERS_PATTERN, message = "{register.name.invalid}")
@@ -33,7 +33,7 @@ public class RegistrationForm {
     @Size(min = PASSWORD_MINSIZE, message = "{register.password.size}")
     private String password;
 
-    private String userid;
+    private Long userid;
 
     @Pattern(regexp = MAIL_PATTERN, message = "{register.email.invalid}")
     private String email;
@@ -56,11 +56,11 @@ public class RegistrationForm {
         this.surname = surname;
     }
 
-    public int getSsn() {
+    public String getSsn() {
         return ssn;
     }
 
-    public void setSsn(int ssn) {
+    public void setSsn(String ssn) {
         this.ssn = ssn;
     }
 
@@ -96,11 +96,11 @@ public class RegistrationForm {
         this.address = address;
     }
 
-    public String getUserid() {
+    public Long getUserid() {
         return userid;
     }
 
-    public void setUserid(String userid) {
+    public void setUserid(Long userid) {
         this.userid = userid;
     }
 }

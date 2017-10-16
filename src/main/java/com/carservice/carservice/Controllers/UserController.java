@@ -52,15 +52,26 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}/edit")
-    public String userEditForm(Model model,@PathVariable(value = "id") Long userid ) {
+    public String userEditForm(Model model,@PathVariable(value = "id") Long userid, @ModelAttribute(REGISTER_FORM)RegistrationForm registrationForm ) {
        // model.addAttribute("user", userid);
 
         String name=  userService.findNameById(userid);
+        String surname=  userService.findSurnameById(userid);
+        String email=  userService.findEmailById(userid);
+        String password=  userService.findPasswordById(userid);
+        String ssn=  userService.findSsnById(userid);
+        String address=  userService.findAddressById(userid);
 
-        RegistrationForm registrationForm =new RegistrationForm();
+
+
         registrationForm.setName(name);
-        registrationForm.setSurname("surname");
-        registrationForm.setUserid(String.valueOf(userid));
+        registrationForm.setSurname(surname);
+        registrationForm.setEmail(email);
+        registrationForm.setPassword(password);
+        registrationForm.setSsn(ssn);
+        registrationForm.setAddress(address);
+        registrationForm.setUserid(userid);
+
 
         model.addAttribute(REGISTER_FORM, registrationForm);
         return "updateUser";
@@ -98,7 +109,7 @@ public class UserController {
 
     }
 
-    @PostMapping("/users/update")
+    @PostMapping("/users/{id}")
     public String updateUser(@Valid @ModelAttribute(REGISTER_FORM)RegistrationForm registrationForm,
                           BindingResult bindingResult, HttpSession session,
                           RedirectAttributes redirectAttributes) {

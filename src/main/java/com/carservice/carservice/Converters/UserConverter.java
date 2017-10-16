@@ -8,6 +8,7 @@ public class UserConverter {
 
     public static User buildUserObject(RegistrationForm registrationForm) {
         User user = new User();
+        user.setUserid(registrationForm.getUserid());
         user.setName(registrationForm.getName());
         user.setPassword(registrationForm.getPassword());
         user.setEmail(registrationForm.getEmail());

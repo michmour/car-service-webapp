@@ -24,6 +24,22 @@ import java.util.List;
         @Query("SELECT name FROM User WHERE userid = :userid")
         String findNameById(@Param("userid") Long userid);
 
+        @Query("SELECT surname FROM User WHERE userid = :userid")
+        String findSurnameById(@Param("userid") Long userid);
+
+        @Query("SELECT email FROM User WHERE userid = :userid")
+        String findEmailById(@Param("userid") Long userid);
+
+        @Query("SELECT password FROM User WHERE userid = :userid")
+        String findPasswordById(@Param("userid") Long userid);
+
+        @Query("SELECT ssn FROM User WHERE userid = :userid")
+        String findSsnById(@Param("userid") Long userid);
+
+        @Query("SELECT address FROM User WHERE userid = :userid")
+        String findAddressById(@Param("userid") Long userid);
+
+
         User save(User user);
     }
 

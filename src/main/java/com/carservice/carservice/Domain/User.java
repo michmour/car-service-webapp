@@ -21,7 +21,7 @@ import java.util.Set;
         private long userid;
 
         @Column(name = "ssn")
-        private int ssn;
+        private String ssn;
 
         @Column(name = "name")
         private String name;
@@ -58,7 +58,7 @@ import java.util.Set;
 
         }
 
-        public User(long userid, int ssn, String name, String surname, String address, String email, String password, int usertype, Date createdAt, Date updatedAt, Set<Repair> servicescollection) {
+        public User(long userid, String ssn, String name, String surname, String address, String email, String password, int usertype, Date createdAt, Date updatedAt, Set<Repair> servicescollection) {
             this.userid = userid;
             this.ssn = ssn;
             this.name = name;
@@ -88,11 +88,11 @@ import java.util.Set;
             this.userid = userid;
         }
 
-        public int getSsn() {
+        public String getSsn() {
             return ssn;
         }
 
-        public void setSsn(int ssn) {
+        public void setSsn(String ssn) {
             this.ssn = ssn;
         }
 

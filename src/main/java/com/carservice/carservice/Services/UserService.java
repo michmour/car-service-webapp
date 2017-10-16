@@ -13,5 +13,15 @@ public interface UserService {
 
     String findNameById(Long userid);
 
+    String findSurnameById(Long userid);
+
+    String findEmailById(Long userid);
+
+    String findPasswordById(Long userid);
+
+    String findSsnById(Long userid);
+
+    String findAddressById(Long userid);
+
     void save(User user);
 }
