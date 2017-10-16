@@ -44,6 +44,13 @@ public class UserController {
         return "createUser";
     }
 
+    @GetMapping("/users/{id}/edit")
+    public String userEditForm(Model model,@PathVariable(value = "id") Long userid ) {
+        model.addAttribute("user", userid);
+        model.addAttribute(REGISTER_FORM, new RegistrationForm());
+        return "updateUser";
+    }
+
     @PostMapping("/users")
     public String addUser(@Valid @ModelAttribute(REGISTER_FORM)RegistrationForm registrationForm,
                           BindingResult bindingResult, HttpSession session,
@@ -75,6 +82,38 @@ public class UserController {
         return "redirect:/users";
 
     }
+
+    @PutMapping("/users/{id}/")
+    public String updateUser(@Valid @ModelAttribute(REGISTER_FORM)RegistrationForm registrationForm,
+                          BindingResult bindingResult, HttpSession session,
+                          RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+            return "updateUser";
+        }
+
+        //here we would have the logic for sending the registration request  to our service
+        // and then redireect to the home page
+        //we want to show the user's username in the homepage welcome message, so we'll use session storage for that
+        //We'll also pass a second parameter using Redirect attributes to do the same thing
+
+        try {
+            User user = UserConverter.buildUserObject(registrationForm);
+            userService.save(user);
+            session.setAttribute("name", registrationForm.getName());
+
+        } catch (Exception exception) {
+            //if an error occurs show it to the user
+            redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
+//                logger.error("User registration failed: " + exception);
+            return "redirect:/updateUser";
+        }
+
+
+        redirectAttributes.addFlashAttribute("message", "You have sucessfully completed registration");
+        return "redirect:/users";
+
+    }
 //    @PostMapping("/users")
 //    public void add(@Valid @RequestBody User user) {
 //
@@ -87,16 +126,16 @@ public class UserController {
 //                + id, HttpStatus.OK);
 //    }
 
-    @GetMapping("/users/{id}")
-    public String findById(Model model,@PathVariable(value = "id") Long userid) {
-
-        List<User> usersList= userService.findOne(userid);
-
-        model.addAttribute("users", usersList);
-        return  "index";
-//        if(user == null) {
-//            return ResponseEntity.notFound().build();
-//        }
-//        return ResponseEntity.ok().body(user);
-    }
+//    @GetMapping("/users/{id}")
+//    public String findById(Model model,@PathVariable(value = "id") Long userid) {
+//
+//        List<User> usersList= userService.findOne(userid);
+//
+//        model.addAttribute("users", usersList);
+//        return  "index";
+////        if(user == null) {
+////            return ResponseEntity.notFound().build();
+////        }
+////        return ResponseEntity.ok().body(user);
+//    }
 }
