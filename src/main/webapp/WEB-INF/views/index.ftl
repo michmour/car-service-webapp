@@ -11,6 +11,7 @@
         <th>Action</th>
      </tr>
      <#list users as user>
+
        <tr>
          <td>${user.userid}</td>
          <td>${user.name}</td>

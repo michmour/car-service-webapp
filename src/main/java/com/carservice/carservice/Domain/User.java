@@ -51,9 +51,18 @@ import java.util.Set;
         @LastModifiedDate
         private Date updatedAt;
 
-        @OneToMany(cascade = CascadeType.ALL,mappedBy="userid",orphanRemoval = true,targetEntity= Repair.class)
+        @OneToMany(cascade = CascadeType.ALL,mappedBy="userRelid",orphanRemoval = true)
         private Set<Repair>servicescollection;
 
+//        public void addServicesCollection(Repair servicecollection) {
+//            servicescollection.add(servicecollection);
+//            servicecollection.setUserRelid(this);
+//        }
+//
+//        public void removeServicesCollection(Repair servicecollection) {
+//            servicescollection.remove(servicecollection);
+//            servicecollection.setUserRelid(null);
+//        }
         public User() {
 
         }

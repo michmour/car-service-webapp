@@ -17,7 +17,7 @@ public class Repair implements Serializable {
     @Id
     @Column(name = "serviceid", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long serviceid;
+    private Long serviceid;
 
     @Column(name = "servicedate")
     private java.sql.Timestamp servicedate;
@@ -46,9 +46,22 @@ public class Repair implements Serializable {
     @LastModifiedDate
     private Date updatedAt;
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name="userid",referencedColumnName= "userid")
-    private User userid;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="userRelid",referencedColumnName= "userid")
+    private User userRelid;
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof Repair)) return false;
+//
+//        return serviceid != null && serviceid.equals(((Repair) o).serviceid);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return getUserRelid().hashCode();
+//    }
 
     public Repair() {
 
@@ -60,7 +73,7 @@ public class Repair implements Serializable {
 
 
 
-    public Repair(long serviceid, Timestamp servicedate, int status, int type, String servicecost, String details, Date createdAt, Date updatedAt, User userid) {
+    public Repair(long serviceid, Timestamp servicedate, int status, int type, String servicecost, String details, Date createdAt, Date updatedAt, User userRelid) {
         this.serviceid = serviceid;
         this.servicedate = servicedate;
         this.status = status;
@@ -69,7 +82,7 @@ public class Repair implements Serializable {
         this.details = details;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.userid = userid;
+        this.userRelid = userRelid;
     }
 
     public long getServiceid() {
@@ -136,11 +149,11 @@ public class Repair implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public User getUserid() {
-        return userid;
+    public User getUserRelid() {
+        return userRelid;
     }
 
-    public void setUserid(User userid) {
-        this.userid = userid;
+    public void setUserRelid(User userid) {
+        this.userRelid = userid;
     }
 }
