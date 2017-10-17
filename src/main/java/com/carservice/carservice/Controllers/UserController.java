@@ -140,6 +140,33 @@ public class UserController {
         return "redirect:/users";
 
     }
+
+    @PostMapping("users/{id}/delete")
+    public String deleteUser(@ModelAttribute(REGISTER_FORM)RegistrationForm registrationForm,
+                             BindingResult bindingResult, HttpSession session,
+                             RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+            return "index";
+        }
+
+        try {
+            User user = UserConverter.buildUserObject(registrationForm);
+            userService.delete(user);
+            session.setAttribute("name", registrationForm.getName());
+
+        } catch (Exception exception) {
+            //if an error occurs show it to the user
+            redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
+//                logger.error("User registration failed: " + exception);
+            return "redirect:/users";
+        }
+
+
+        redirectAttributes.addFlashAttribute("message", "You have sucessfully completed registration");
+        return "redirect:/users";
+
+    }
 //    @PostMapping("/users")
 //    public void add(@Valid @RequestBody User user) {
 //

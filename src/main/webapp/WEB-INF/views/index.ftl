@@ -16,7 +16,10 @@
          <td>${user.name}</td>
          <td>${user.surname}</td>
          <td> <a href="/users/${user.userid}/edit">Edit</a></td>
-           <td> <a href="/users/${user.userid}/delete">Delete</a></td>
+           <form action="/users/${user.userid}/delete" method="post" name="deleteUser">
+               <input type="hidden" name="userid" value="${user.userid}"/>
+           <td><button type="submit">Delete</button></td>
+           </form>
        </tr>
      </#list>
      </#if>

@@ -39,9 +39,7 @@ import java.util.List;
         @Query("SELECT address FROM User WHERE userid = :userid")
         String findAddressById(@Param("userid") Long userid);
 
-        @Query("DELETE FROM User WHERE userid= :userid")
-        String deleteById(@Param("userid") Long userid);
-
+        void delete(User user);
 
         User save(User user);
     }
