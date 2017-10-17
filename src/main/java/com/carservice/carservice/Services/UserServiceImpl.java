@@ -44,6 +44,9 @@ import java.util.List;
         public String findAddressById(Long userid){ return userRepository.findAddressById(userid);}
 
         @Override
+        public String deleteById(Long userid){ return userRepository.deleteById(userid);}
+
+        @Override
         public void save(User user) {
             userRepository.save(user);
         }

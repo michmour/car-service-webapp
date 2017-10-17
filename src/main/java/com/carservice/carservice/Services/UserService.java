@@ -23,5 +23,7 @@ public interface UserService {
 
     String findAddressById(Long userid);
 
+    String deleteById(Long userid);
+
     void save(User user);
 }
