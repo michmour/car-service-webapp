@@ -17,6 +17,7 @@ public class UserConverter {
         user.setSurname(registrationForm.getSurname());
         user.setSsn(registrationForm.getSsn());
         user.setAddress(registrationForm.getAddress());
+        user.setUsertype(registrationForm.getUsertype());
         return user;
     }
 }

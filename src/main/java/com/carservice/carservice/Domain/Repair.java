@@ -47,8 +47,8 @@ public class Repair implements Serializable {
     private Date updatedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="userRelid",referencedColumnName= "userid")
-    private User userRelid;
+    @JoinColumn(name="userelid")
+    private User userelid;
 
 //    @Override
 //    public boolean equals(Object o) {
@@ -60,7 +60,7 @@ public class Repair implements Serializable {
 //
 //    @Override
 //    public int hashCode() {
-//        return getUserRelid().hashCode();
+//        return getUserelid().hashCode();
 //    }
 
     public Repair() {
@@ -73,7 +73,7 @@ public class Repair implements Serializable {
 
 
 
-    public Repair(long serviceid, Timestamp servicedate, int status, int type, String servicecost, String details, Date createdAt, Date updatedAt, User userRelid) {
+    public Repair(Long serviceid, Timestamp servicedate, int status, int type, String servicecost, String details, Date createdAt, Date updatedAt, User userelid) {
         this.serviceid = serviceid;
         this.servicedate = servicedate;
         this.status = status;
@@ -82,14 +82,14 @@ public class Repair implements Serializable {
         this.details = details;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.userRelid = userRelid;
+        this.userelid = userelid;
     }
 
-    public long getServiceid() {
+    public Long getServiceid() {
         return serviceid;
     }
 
-    public void setServiceid(long serviceid) {
+    public void setServiceid(Long serviceid) {
         this.serviceid = serviceid;
     }
 
@@ -149,11 +149,11 @@ public class Repair implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public User getUserRelid() {
-        return userRelid;
+    public User getUserelid() {
+        return userelid;
     }
 
-    public void setUserRelid(User userid) {
-        this.userRelid = userid;
+    public void setUserelid(User userid) {
+        this.userelid = userid;
     }
 }

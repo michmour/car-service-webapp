@@ -18,7 +18,7 @@ import java.util.Set;
         @Id
         @Column(name = "userid", nullable = false)
         @GeneratedValue(strategy = GenerationType.AUTO)
-        private long userid;
+        private Long userid;
 
         @Column(name = "ssn")
         private String ssn;
@@ -51,23 +51,29 @@ import java.util.Set;
         @LastModifiedDate
         private Date updatedAt;
 
-        @OneToMany(cascade = CascadeType.ALL,mappedBy="userRelid",orphanRemoval = true)
-        private Set<Repair>servicescollection;
+        /* Bidirectional Relationship */
+        @OneToMany(mappedBy="userelid",cascade = CascadeType.ALL)
+
+        /* Unidirectional Relationship */
+//        @OneToMany(cascade = CascadeType.,orphanRemoval = true)
+//        @JoinColumn(name = "userelid")
+        private Set<Repair> servicescollection;
 
 //        public void addServicesCollection(Repair servicecollection) {
 //            servicescollection.add(servicecollection);
-//            servicecollection.setUserRelid(this);
+//            servicecollection.setUserelid(this);
 //        }
 //
 //        public void removeServicesCollection(Repair servicecollection) {
 //            servicescollection.remove(servicecollection);
-//            servicecollection.setUserRelid(null);
+//            servicecollection.setUserelid(null);
 //        }
+
         public User() {
 
         }
 
-        public User(long userid, String ssn, String name, String surname, String address, String email, String password, int usertype, Date createdAt, Date updatedAt, Set<Repair> servicescollection) {
+        public User(Long userid, String ssn, String name, String surname, String address, String email, String password, int usertype, Date createdAt, Date updatedAt, Set<Repair> servicescollection) {
             this.userid = userid;
             this.ssn = ssn;
             this.name = name;
@@ -89,11 +95,11 @@ import java.util.Set;
 
 
 
-    public long getUserid() {
+    public Long getUserid() {
             return userid;
         }
 
-        public void setUserid(long userid) {
+        public void setUserid(Long userid) {
             this.userid = userid;
         }
 
