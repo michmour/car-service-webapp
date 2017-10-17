@@ -100,7 +100,7 @@ public class UserController {
             //if an error occurs show it to the user
             redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
 //                logger.error("User registration failed: " + exception);
-            return "redirect:/createUser";
+            return "createUser";
         }
 
 
