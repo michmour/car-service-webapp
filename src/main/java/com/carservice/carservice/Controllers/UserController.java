@@ -25,17 +25,6 @@ public class UserController {
     private UserService userService;
 
 
-//    @GetMapping("/users")
-//    public List<User> findAll() {
-//        return userService.findAll();
-//    }
-
-//    @PostMapping("/users/update")
-//    public String updateUser(Model model, @ModelAttribute(REGISTER_FORM)RegistrationForm registrationForm){
-//        model.addAttribute("msg",registrationForm.getName());
-//        return "index";
-//    }
-
     @GetMapping("/users")
     public String usersIndex(Model model) {
 
