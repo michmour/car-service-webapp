@@ -57,18 +57,19 @@ import java.util.Set;
 
 //        public void addServicesCollection(Repair servicecollection) {
 //            servicescollection.add(servicecollection);
-//            servicecollection.setUserRelid(this);
+//            servicecollection.setUserelid(this);
 //        }
 //
 //        public void removeServicesCollection(Repair servicecollection) {
 //            servicescollection.remove(servicecollection);
-//            servicecollection.setUserRelid(null);
+//            servicecollection.setUserelid(null);
 //        }
+
         public User() {
 
         }
 
-        public User(Long userid, String ssn, String name, String surname, String address, String email, String password, int usertype, Date createdAt, Date updatedAt, List<Repair> servicescollection) {
+        public User(Long userid, String ssn, String name, String surname, String address, String email, String password, int usertype, Date createdAt, Date updatedAt, Set<Repair> servicescollection) {
             this.userid = userid;
             this.ssn = ssn;
             this.name = name;
@@ -176,20 +177,5 @@ import java.util.Set;
 
         public void setServicescollection(List<Repair> servicescollection) {
             this.servicescollection = servicescollection;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof User)) return false;
-
-            User user = (User) o;
-
-            return getUserid() == user.getUserid();
-        }
-
-        @Override
-        public int hashCode() {
-            return (int) (getUserid() ^ (getUserid() >>> 32));
         }
     }
