@@ -69,7 +69,7 @@ import java.util.Set;
 
         }
 
-        public User(Long userid, String ssn, String name, String surname, String address, String email, String password, int usertype, Date createdAt, Date updatedAt, Set<Repair> servicescollection) {
+        public User(Long userid, String ssn, String name, String surname, String address, String email, String password, int usertype, Date createdAt, Date updatedAt, List<Repair> servicescollection) {
             this.userid = userid;
             this.ssn = ssn;
             this.name = name;
