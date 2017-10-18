@@ -52,7 +52,7 @@ import java.util.Set;
         @LastModifiedDate
         private Date updatedAt;
 
-        @OneToMany(cascade = CascadeType.REMOVE, mappedBy="userRelid",orphanRemoval = true)
+        @OneToMany(cascade = CascadeType.REMOVE, mappedBy="userelid",orphanRemoval = true)
         private List<Repair>servicescollection;
 
 //        public void addServicesCollection(Repair servicecollection) {
