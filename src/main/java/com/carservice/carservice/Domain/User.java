@@ -8,6 +8,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
     @Entity
@@ -17,8 +18,8 @@ import java.util.Set;
 
         @Id
         @Column(name = "userid", nullable = false)
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        private long userid;
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long userid;
 
         @Column(name = "ssn")
         private String ssn;
@@ -51,8 +52,8 @@ import java.util.Set;
         @LastModifiedDate
         private Date updatedAt;
 
-        @OneToMany(cascade = CascadeType.ALL,mappedBy="userRelid",orphanRemoval = true)
-        private Set<Repair>servicescollection;
+        @OneToMany(cascade = CascadeType.REMOVE, mappedBy="userRelid",orphanRemoval = true)
+        private List<Repair>servicescollection;
 
 //        public void addServicesCollection(Repair servicecollection) {
 //            servicescollection.add(servicecollection);
@@ -67,7 +68,7 @@ import java.util.Set;
 
         }
 
-        public User(long userid, String ssn, String name, String surname, String address, String email, String password, int usertype, Date createdAt, Date updatedAt, Set<Repair> servicescollection) {
+        public User(Long userid, String ssn, String name, String surname, String address, String email, String password, int usertype, Date createdAt, Date updatedAt, List<Repair> servicescollection) {
             this.userid = userid;
             this.ssn = ssn;
             this.name = name;
@@ -89,11 +90,11 @@ import java.util.Set;
 
 
 
-    public long getUserid() {
+    public Long getUserid() {
             return userid;
         }
 
-        public void setUserid(long userid) {
+        public void setUserid(Long userid) {
             this.userid = userid;
         }
 
@@ -169,11 +170,26 @@ import java.util.Set;
             this.updatedAt = updatedAt;
         }
 
-        public Set<Repair> getServicescollection() {
+        public List<Repair> getServicescollection() {
             return servicescollection;
         }
 
-        public void setServicescollection(Set<Repair> servicescollection) {
+        public void setServicescollection(List<Repair> servicescollection) {
             this.servicescollection = servicescollection;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof User)) return false;
+
+            User user = (User) o;
+
+            return getUserid() == user.getUserid();
+        }
+
+        @Override
+        public int hashCode() {
+            return (int) (getUserid() ^ (getUserid() >>> 32));
         }
     }

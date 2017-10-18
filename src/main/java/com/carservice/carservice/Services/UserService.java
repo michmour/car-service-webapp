@@ -9,7 +9,7 @@ public interface UserService {
 
     List<User> findAll();
 
-    List<User> findOne(long userid);
+    User findOne(Long userid);
 
     String findNameById(Long userid);
 

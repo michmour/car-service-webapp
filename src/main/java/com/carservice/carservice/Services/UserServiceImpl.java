@@ -23,7 +23,7 @@ import java.util.List;
         }
 
         @Override
-        public List<User> findOne(long userid){ return userRepository.findOne(userid);}
+        public User findOne(Long userid){ return userRepository.findOne(userid);}
 
         @Override
         public String findNameById (Long userid){ return userRepository.findNameById(userid);}

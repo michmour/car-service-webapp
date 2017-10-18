@@ -1,8 +1,12 @@
 package com.carservice.carservice.Models;
 
+import com.carservice.carservice.Domain.Repair;
+import com.carservice.carservice.Domain.User;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 public class RegistrationForm {
 
@@ -37,6 +41,8 @@ public class RegistrationForm {
 
     @Pattern(regexp = MAIL_PATTERN, message = "{register.email.invalid}")
     private String email;
+
+    private List<Repair> servicescollection;
 
 
 
@@ -102,5 +108,13 @@ public class RegistrationForm {
 
     public void setUserid(Long userid) {
         this.userid = userid;
+    }
+
+    public List<Repair> getServicescollection() {
+        return servicescollection;
+    }
+
+    public void setServicescollection(List<Repair> servicescollection) {
+        this.servicescollection = servicescollection;
     }
 }

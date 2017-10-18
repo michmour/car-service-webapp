@@ -1,6 +1,7 @@
 package com.carservice.carservice.Controllers;
 
 import com.carservice.carservice.Converters.UserConverter;
+import com.carservice.carservice.Domain.Repair;
 import com.carservice.carservice.Domain.User;
 import com.carservice.carservice.Services.UserService;
 import com.carservice.carservice.Models.RegistrationForm;
@@ -42,15 +43,18 @@ public class UserController {
 
     @GetMapping("/users/{id}/edit")
     public String userEditForm(Model model,@PathVariable(value = "id") Long userid, @ModelAttribute(REGISTER_FORM)RegistrationForm registrationForm ) {
-       // model.addAttribute("user", userid);
 
-        String name=  userService.findNameById(userid);
-        String surname=  userService.findSurnameById(userid);
-        String email=  userService.findEmailById(userid);
-        String password=  userService.findPasswordById(userid);
-        String ssn=  userService.findSsnById(userid);
-        String address=  userService.findAddressById(userid);
+        // model.addAttribute("user", userid);
+        User userList= userService.findOne(userid);
 
+        String name= userList.getName();
+        String surname=  userList.getSurname();
+        String email=  userList.getEmail();
+        String password=  userList.getPassword();
+        String ssn=  userList.getSsn();
+        String address=  userList.getAddress();
+        Integer usertype= userList.getUsertype();
+        List<Repair> servicescollection=  userList.getServicescollection();
 
 
         registrationForm.setName(name);
@@ -60,9 +64,10 @@ public class UserController {
         registrationForm.setSsn(ssn);
         registrationForm.setAddress(address);
         registrationForm.setUserid(userid);
+        registrationForm.setUsertype(usertype);
+        registrationForm.setServicescollection(servicescollection);
 
-
-        model.addAttribute(REGISTER_FORM, registrationForm);
+        model.addAttribute(REGISTER_FORM, registrationForm );
         return "updateUser";
     }
 
@@ -99,7 +104,7 @@ public class UserController {
     }
 
     @PostMapping("/users/{id}")
-    public String updateUser(@Valid @ModelAttribute(REGISTER_FORM)RegistrationForm registrationForm,
+    public String updateUser( @ModelAttribute(REGISTER_FORM)RegistrationForm registrationForm,
                           BindingResult bindingResult, HttpSession session,
                           RedirectAttributes redirectAttributes) {
 

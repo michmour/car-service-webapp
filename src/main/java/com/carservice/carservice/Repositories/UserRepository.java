@@ -19,8 +19,6 @@ import java.util.List;
 
         List<User> findAll();
 
-        List<User> findOne(long userid);
-
         @Query("SELECT name FROM User WHERE userid = :userid")
         String findNameById(@Param("userid") Long userid);
 
@@ -41,6 +39,5 @@ import java.util.List;
 
         void delete(User user);
 
-        User save(User user);
     }
 

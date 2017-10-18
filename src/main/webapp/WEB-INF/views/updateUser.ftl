@@ -24,7 +24,11 @@
         <label for="address">Address</label>
         <input type="text" name="address" id="address" value="${registrationForm.address}" placeholder="address"/>
 
-        <input type="hidden" name="userid" value="${registrationForm.userid}"/>
+        <input type="hidden" name="usertype" value="${registrationForm.usertype}"/>
+
+                <input type="hidden" name="userid" value="${registrationForm.userid}"/>
+
+
 
         <button type="submit">Edit</button>
     </form>

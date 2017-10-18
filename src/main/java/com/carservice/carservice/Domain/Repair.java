@@ -46,7 +46,7 @@ public class Repair implements Serializable {
     @LastModifiedDate
     private Date updatedAt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="userRelid",referencedColumnName= "userid")
     private User userRelid;
 
