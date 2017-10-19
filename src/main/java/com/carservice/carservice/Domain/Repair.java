@@ -47,7 +47,7 @@ public class Repair implements Serializable {
     private Date updatedAt;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="userRelid",referencedColumnName= "userid")
+    @JoinColumn(name="userelid",referencedColumnName= "userid")
     private User userelid;
 
 //    @Override
@@ -153,7 +153,10 @@ public class Repair implements Serializable {
         return userelid;
     }
 
-    public void setUserelid(User userid) {
-        this.userelid = userid;
+    public void setUserelid(User userelid) {
+        this.userelid = userelid;
     }
+
+
+
 }

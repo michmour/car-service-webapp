@@ -52,7 +52,7 @@ import java.util.Set;
         @LastModifiedDate
         private Date updatedAt;
 
-        @OneToMany(cascade = CascadeType.REMOVE, mappedBy="userelid",orphanRemoval = true)
+        @OneToMany(cascade={CascadeType.REMOVE}, mappedBy="userelid",orphanRemoval = true)
         private List<Repair>servicescollection;
 
 //        public void addServicesCollection(Repair servicecollection) {
@@ -178,4 +178,28 @@ import java.util.Set;
         public void setServicescollection(List<Repair> servicescollection) {
             this.servicescollection = servicescollection;
         }
+
+//        public void setServicescollection(List<Repair> servicescollection) {
+//            if (this.servicescollection == null) {
+//                this.servicescollection = servicescollection;
+//            } else {
+//                this.servicescollection.retainAll(servicescollection);
+//                this.servicescollection.addAll(servicescollection);
+//            }
+//        }
+//        @Override
+//        public String toString() {
+//            String result = String.format(
+//                    "Category[id=%d, name='%s']%n",
+//                    userid, name);
+//            if (servicescollection != null) {
+//                for(Repair servicecollection : servicescollection) {
+//                    result += String.format(
+//                            "Service[id=%d, details='%s']%n",
+//                            servicecollection.getServiceid(), servicecollection.getDetails());
+//                }
+//            }
+//
+//            return result;
+//        }
     }

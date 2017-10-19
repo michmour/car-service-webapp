@@ -6,7 +6,7 @@ import com.carservice.carservice.Models.RegistrationForm;
 
 public class UserConverter {
 
-    public static User buildUserObject(RegistrationForm registrationForm) {
+    public static User buildUserObject(RegistrationForm registrationForm ) {
         User user = new User();
         if(registrationForm.getUserid()!=null) {
             user.setUserid(registrationForm.getUserid());

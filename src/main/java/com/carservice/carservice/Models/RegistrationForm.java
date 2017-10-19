@@ -2,10 +2,12 @@ package com.carservice.carservice.Models;
 
 import com.carservice.carservice.Domain.Repair;
 import com.carservice.carservice.Domain.User;
+import org.hibernate.collection.internal.PersistentBag;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RegistrationForm {
@@ -110,7 +112,10 @@ public class RegistrationForm {
         this.userid = userid;
     }
 
-    public List<Repair> getServicescollection() {
+    public List<Repair> getServicescollection(){
+        if (servicescollection == null) {
+            return new ArrayList<>();
+        }
         return servicescollection;
     }
 
