@@ -40,7 +40,7 @@ import java.util.Set;
         private String password;
 
         @Column(name = "usertype")
-        private int usertype;
+        private String usertype;
 
         @Column(name = "createdAt",nullable = false, updatable = false)
         @Temporal(TemporalType.TIMESTAMP)
@@ -69,7 +69,7 @@ import java.util.Set;
 
         }
 
-        public User(Long userid, String ssn, String name, String surname, String address, String email, String password, int usertype, Date createdAt, Date updatedAt, List<Repair> servicescollection) {
+        public User(Long userid, String ssn, String name, String surname, String address, String email, String password, String usertype, Date createdAt, Date updatedAt, List<Repair> servicescollection) {
             this.userid = userid;
             this.ssn = ssn;
             this.name = name;
@@ -147,11 +147,11 @@ import java.util.Set;
             this.password = password;
         }
 
-        public int getUsertype() {
+        public String getUsertype() {
             return usertype;
         }
 
-        public void setUsertype(int usertype) {
+        public void setUsertype(String usertype) {
             this.usertype = usertype;
         }
 

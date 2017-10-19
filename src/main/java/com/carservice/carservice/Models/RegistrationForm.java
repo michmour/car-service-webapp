@@ -24,7 +24,7 @@ public class RegistrationForm {
 
     private static final int PASSWORD_MINSIZE = 6;
 
-    private int usertype;
+    private String usertype;
     private String ssn;
     private String address;
 
@@ -72,11 +72,11 @@ public class RegistrationForm {
         this.ssn = ssn;
     }
 
-    public int getUsertype() {
+    public String getUsertype() {
         return usertype;
     }
 
-    public void setUsertype(int usertype) {
+    public void setUsertype(String usertype) {
         this.usertype = usertype;
     }
 

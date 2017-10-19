@@ -53,7 +53,7 @@ public class UserController {
         String password=  userList.getPassword();
         String ssn=  userList.getSsn();
         String address=  userList.getAddress();
-        Integer usertype= userList.getUsertype();
+        String usertype= userList.getUsertype();
         List<Repair> servicescollection=  userList.getServicescollection();
 
 
