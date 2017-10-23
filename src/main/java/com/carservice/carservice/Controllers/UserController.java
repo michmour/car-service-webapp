@@ -1,17 +1,15 @@
 package com.carservice.carservice.Controllers;
 
 import com.carservice.carservice.Converters.UserConverter;
-import com.carservice.carservice.Domain.Repair;
 import com.carservice.carservice.Domain.User;
 import com.carservice.carservice.Services.UserService;
-import com.carservice.carservice.Models.RegistrationForm;
+import com.carservice.carservice.Models.UserForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
@@ -20,7 +18,7 @@ import java.util.List;
 public class UserController {
 
 
-    private static final String REGISTER_FORM = "registrationForm";
+    private static final String USER_FORM = "userForm";
 
     @Autowired
     private UserService userService;
@@ -37,42 +35,20 @@ public class UserController {
 
     @GetMapping("/users/add")
     public String userAddForm(Model model) {
-        model.addAttribute(REGISTER_FORM, new RegistrationForm());
+        model.addAttribute(USER_FORM, new UserForm());
         return "createUser";
     }
 
     @GetMapping("/users/{id}/edit")
-    public String userEditForm(Model model,@PathVariable(value = "id") Long userid, @ModelAttribute(REGISTER_FORM)RegistrationForm registrationForm ) {
-
-        // model.addAttribute("user", userid);
-        User userList= userService.findOne(userid);
-
-        String name= userList.getName();
-        String surname=  userList.getSurname();
-        String email=  userList.getEmail();
-        String password=  userList.getPassword();
-        String ssn=  userList.getSsn();
-        String address=  userList.getAddress();
-        String usertype= userList.getUsertype();
-        List<Repair> servicescollection=  userList.getServicescollection();
+    public String userEditForm(Model model,@PathVariable(value = "id") Long userid, @ModelAttribute(USER_FORM)UserForm userForm) {
 
 
-        registrationForm.setName(name);
-        registrationForm.setSurname(surname);
-        registrationForm.setEmail(email);
-        registrationForm.setPassword(password);
-        registrationForm.setSsn(ssn);
-        registrationForm.setAddress(address);
-        registrationForm.setUserid(userid);
-        registrationForm.setUsertype(usertype);
-        registrationForm.setServicescollection(servicescollection);
-
-        model.addAttribute(REGISTER_FORM, registrationForm );
+        model.addAttribute(USER_FORM, userService.findOne(userid) );
         return "updateUser";
     }
 
     @PostMapping("/users")
-    public String addUser(@Valid @ModelAttribute(REGISTER_FORM)RegistrationForm registrationForm,
+    public String addUser(@Valid @ModelAttribute(USER_FORM)UserForm userForm,
                           BindingResult bindingResult, HttpSession session,
                           RedirectAttributes redirectAttributes) {
 
@@ -80,22 +56,9 @@ public class UserController {
             return "createUser";
         }
 
-        //here we would have the logic for sending the registration request  to our service
-        // and then redireect to the home page
-        //we want to show the user's username in the homepage welcome message, so we'll use session storage for that
-        //We'll also pass a second parameter using Redirect attributes to do the same thing
-
-        try {
-            User user = UserConverter.buildUserObject(registrationForm);
+            User user = UserConverter.buildUserObject(userForm);
             userService.save(user);
-            session.setAttribute("name", registrationForm.getName());
 
-        } catch (Exception exception) {
-            //if an error occurs show it to the user
-            redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
-//                logger.error("User registration failed: " + exception);
-            return "createUser";
-        }
 
 
         redirectAttributes.addFlashAttribute("message", "You have sucessfully completed registration");
@@ -104,43 +67,27 @@ public class UserController {
     }
 
     @PostMapping("/users/{id}")
-    public String updateUser(@Valid @ModelAttribute(REGISTER_FORM)RegistrationForm registrationForm,@PathVariable(value = "id") Long userid,
-                          BindingResult bindingResult, HttpSession session,
-                          RedirectAttributes redirectAttributes) {
+    public String updateUser(@Valid @ModelAttribute(USER_FORM)UserForm userForm, @PathVariable(value = "id") Long userid,
+                             BindingResult bindingResult, HttpSession session,
+                             RedirectAttributes redirectAttributes) {
 
-        User userList= userService.findOne(userid);
-        List<Repair> servicescollection=  userList.getServicescollection();
-        registrationForm.setServicescollection(servicescollection);
 
         if (bindingResult.hasErrors()) {
             return "index";
         }
 
-        //here we would have the logic for sending the registration request  to our service
-        // and then redireect to the home page
-        //we want to show the user's username in the homepage welcome message, so we'll use session storage for that
-        //We'll also pass a second parameter using Redirect attributes to do the same thing
-
-        try {
-            User user = UserConverter.buildUserObject(registrationForm);
+            User user = UserConverter.buildUserObject(userForm);
             userService.save(user);
-            session.setAttribute("name", registrationForm.getName());
-
-        } catch (Exception exception) {
-            //if an error occurs show it to the user
-            redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
-//                logger.error("User registration failed: " + exception);
-            return "redirect:/updateUser";
-        }
 
 
-        redirectAttributes.addFlashAttribute("message", "You have sucessfully completed registration");
+
+
         return "redirect:/users";
 
     }
 
     @PostMapping("users/{id}/delete")
-    public String deleteUser(@ModelAttribute(REGISTER_FORM)RegistrationForm registrationForm,@PathVariable(value = "id") Long userid,
+    public String deleteUser(@ModelAttribute(USER_FORM)UserForm userForm, @PathVariable(value = "id") Long userid,
                              BindingResult bindingResult, HttpSession session,
                              RedirectAttributes redirectAttributes) {
 
@@ -150,19 +97,8 @@ public class UserController {
             return "index";
         }
 
-        try {
             userService.delete(userToDelete);
-            session.setAttribute("name", registrationForm.getName());
 
-        } catch (Exception exception) {
-            //if an error occurs show it to the user
-            redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
-//                logger.error("User registration failed: " + exception);
-            return "redirect:/users";
-        }
-
-
-        redirectAttributes.addFlashAttribute("message", "You have sucessfully completed registration");
         return "redirect:/users";
 
     }

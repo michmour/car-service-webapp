@@ -21,7 +21,7 @@ import java.util.Set;
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long userid;
 
-        @Column(name = "ssn")
+        @Column(name = "ssn", unique=true)
         private String ssn;
 
         @Column(name = "name")
@@ -33,7 +33,7 @@ import java.util.Set;
         @Column(name = "address")
         private String address;
 
-        @Column(name = "email")
+        @Column(name = "email", unique=true)
         private String email;
 
         @Column(name = "password")
@@ -55,6 +55,9 @@ import java.util.Set;
         @OneToMany(cascade={CascadeType.REMOVE}, mappedBy="userelid",orphanRemoval = true)
         private List<Repair>servicescollection;
 
+        @OneToMany(cascade={CascadeType.REMOVE}, mappedBy="userelid",orphanRemoval = true)
+        private List<Vehicle>vehiclescollection;
+
 //        public void addServicesCollection(Repair servicecollection) {
 //            servicescollection.add(servicecollection);
 //            servicecollection.setUserelid(this);
@@ -69,7 +72,7 @@ import java.util.Set;
 
         }
 
-        public User(Long userid, String ssn, String name, String surname, String address, String email, String password, String usertype, Date createdAt, Date updatedAt, List<Repair> servicescollection) {
+        public User(Long userid, String ssn, String name, String surname, String address, String email, String password, String usertype, Date createdAt, Date updatedAt, List<Repair> servicescollection,List<Vehicle> vehiclescollection) {
             this.userid = userid;
             this.ssn = ssn;
             this.name = name;
@@ -81,6 +84,7 @@ import java.util.Set;
             this.createdAt = createdAt;
             this.updatedAt = updatedAt;
             this.servicescollection = servicescollection;
+            this.vehiclescollection = vehiclescollection;
         }
 
 
@@ -179,7 +183,15 @@ import java.util.Set;
             this.servicescollection = servicescollection;
         }
 
-//        public void setServicescollection(List<Repair> servicescollection) {
+        public List<Vehicle> getVehiclescollection() {
+            return vehiclescollection;
+        }
+
+        public void setVehiclescollection(List<Vehicle> vehiclescollection) {
+            this.vehiclescollection = vehiclescollection;
+        }
+
+        //        public void setServicescollection(List<Repair> servicescollection) {
 //            if (this.servicescollection == null) {
 //                this.servicescollection = servicescollection;
 //            } else {

@@ -1,7 +1,7 @@
 <#import "/spring.ftl" as spring/>
 
 <div class="container">
-    <form action="/register" method="post" id="registrationForm" name="registrationForm">
+    <form action="/register" method="post" id="userForm" name="userForm">
 
         <label for="name">First Name</label>
         <input type="text" name="name" id="name" placeholder="name"/>

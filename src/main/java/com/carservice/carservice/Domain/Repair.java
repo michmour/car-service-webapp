@@ -3,35 +3,39 @@ package com.carservice.carservice.Domain;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
 @Table(name="repair")
+@EntityListeners(AuditingEntityListener.class)
 public class Repair implements Serializable {
 
     @Id
     @Column(name = "serviceid", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long serviceid;
 
     @Column(name = "servicedate")
-    private java.sql.Timestamp servicedate;
+    private LocalDateTime servicedate;
 
-
+ //   @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private int status;
+    private String status;
 
+  //  @Enumerated(EnumType.STRING)
     @Column(name = "type")
-    private int type;
+    private String type;
 
-    @Digits(integer=10, fraction=2)
+    //@Digits(integer=10, fraction=2)
     @Column(name = "servicecost")
-    private String servicecost;
+    private int servicecost;
 
     @Column(name = "details")
     private String details;
@@ -73,7 +77,7 @@ public class Repair implements Serializable {
 
 
 
-    public Repair(Long serviceid, Timestamp servicedate, int status, int type, String servicecost, String details, Date createdAt, Date updatedAt, User userelid) {
+    public Repair(Long serviceid, LocalDateTime servicedate, String status, String type, int servicecost, String details, Date createdAt, Date updatedAt, User userelid) {
         this.serviceid = serviceid;
         this.servicedate = servicedate;
         this.status = status;
@@ -93,35 +97,35 @@ public class Repair implements Serializable {
         this.serviceid = serviceid;
     }
 
-    public Timestamp getServicedate() {
+    public LocalDateTime getServicedate() {
         return servicedate;
     }
 
-    public void setServicedate(Timestamp servicedate) {
+    public void setServicedate(LocalDateTime servicedate) {
         this.servicedate = servicedate;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
 
-    public String getServicecost() {
+    public int getServicecost() {
         return servicecost;
     }
 
-    public void setServicecost(String servicecost) {
+    public void setServicecost(int servicecost) {
         this.servicecost = servicecost;
     }
 

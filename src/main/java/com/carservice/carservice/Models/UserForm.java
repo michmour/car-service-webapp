@@ -2,6 +2,7 @@ package com.carservice.carservice.Models;
 
 import com.carservice.carservice.Domain.Repair;
 import com.carservice.carservice.Domain.User;
+import com.carservice.carservice.Domain.Vehicle;
 import org.hibernate.collection.internal.PersistentBag;
 
 import javax.validation.constraints.NotNull;
@@ -10,7 +11,7 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegistrationForm {
+public class UserForm {
 
 
 
@@ -45,6 +46,8 @@ public class RegistrationForm {
     private String email;
 
     private List<Repair> servicescollection;
+
+    private List<Vehicle> vehiclescollection;
 
 
 
@@ -121,5 +124,16 @@ public class RegistrationForm {
 
     public void setServicescollection(List<Repair> servicescollection) {
         this.servicescollection = servicescollection;
+    }
+
+    public List<Vehicle> getVehiclescollection() {
+        if (vehiclescollection == null) {
+            return new ArrayList<>();
+        }
+        return vehiclescollection;
+    }
+
+    public void setVehiclescollection(List<Vehicle> vehiclescollection) {
+        this.vehiclescollection = vehiclescollection;
     }
 }

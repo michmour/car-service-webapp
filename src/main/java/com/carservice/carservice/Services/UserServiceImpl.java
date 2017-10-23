@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Set;
 
 
-@Service
+    @Service
     @Transactional
     public class UserServiceImpl implements UserService {
     private final static org.slf4j.Logger LOG = LoggerFactory.getLogger(UserServiceImpl.class);
@@ -32,23 +32,6 @@ import java.util.Set;
         @Override
         public User findOne(Long userid){ return userRepository.findOne(userid);}
 
-        @Override
-        public String findNameById (Long userid){ return userRepository.findNameById(userid);}
-
-        @Override
-        public String findSurnameById(Long userid){ return userRepository.findSurnameById(userid);}
-
-        @Override
-        public String findEmailById(Long userid){ return userRepository.findEmailById(userid);}
-
-        @Override
-        public String findPasswordById(Long userid){ return userRepository.findPasswordById(userid);}
-
-        @Override
-        public String findSsnById(Long userid){ return userRepository.findSsnById(userid);}
-
-        @Override
-        public String findAddressById(Long userid){ return userRepository.findAddressById(userid);}
 
     //LOGIN-LOGOUT
 

@@ -17,7 +17,7 @@ import java.util.List;
 
        // List<User> findByLastName(@Param("name") String name);
 
-        List<User> findAll();
+       // List<User> findAll();
 
         User findByEmailAndPassword(String email, String password);
 
