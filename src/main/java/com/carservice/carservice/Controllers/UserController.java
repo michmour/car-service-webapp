@@ -24,22 +24,22 @@ public class UserController {
     private UserService userService;
 
 
-    @GetMapping("/users")
+    @GetMapping("/admin/users")
     public String usersIndex(Model model) {
 
         List<User> usersList= userService.findAll();
         model.addAttribute("users", usersList);
 
-        return "index";
+        return "allUsers";
     }
 
-    @GetMapping("/users/add")
+    @GetMapping("/admin/users/add")
     public String userAddForm(Model model) {
         model.addAttribute(USER_FORM, new UserForm());
-        return "createUser";
+        return "adduser";
     }
 
-    @GetMapping("/users/{id}/edit")
+    @GetMapping("/admin/users/{id}/edit")
     public String userEditForm(Model model,@PathVariable(value = "id") Long userid, @ModelAttribute(USER_FORM)UserForm userForm) {
 
 
@@ -47,13 +47,13 @@ public class UserController {
         return "updateUser";
     }
 
-    @PostMapping("/users")
+    @PostMapping("/admin/users")
     public String addUser(@Valid @ModelAttribute(USER_FORM)UserForm userForm,
                           BindingResult bindingResult, HttpSession session,
                           RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
-            return "createUser";
+            return "addUser";
         }
 
             User user = UserConverter.buildUserObject(userForm);
@@ -62,11 +62,11 @@ public class UserController {
 
 
         redirectAttributes.addFlashAttribute("message", "You have sucessfully completed registration");
-        return "redirect:/users";
+        return "redirect:/admin/users";
 
     }
 
-    @PostMapping("/users/{id}")
+    @PostMapping("/admin/users/{id}")
     public String updateUser(@Valid @ModelAttribute(USER_FORM)UserForm userForm, @PathVariable(value = "id") Long userid,
                              BindingResult bindingResult, HttpSession session,
                              RedirectAttributes redirectAttributes) {
@@ -82,11 +82,11 @@ public class UserController {
 
 
 
-        return "redirect:/users";
+        return "redirect:/admin/users";
 
     }
 
-    @PostMapping("users/{id}/delete")
+    @PostMapping("/admin/users/{id}/delete")
     public String deleteUser(@ModelAttribute(USER_FORM)UserForm userForm, @PathVariable(value = "id") Long userid,
                              BindingResult bindingResult, HttpSession session,
                              RedirectAttributes redirectAttributes) {
@@ -99,7 +99,7 @@ public class UserController {
 
             userService.delete(userToDelete);
 
-        return "redirect:/users";
+        return "redirect:/admin/users";
 
     }
 //    @PostMapping("/users")

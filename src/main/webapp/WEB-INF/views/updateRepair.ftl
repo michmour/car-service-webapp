@@ -11,14 +11,13 @@
         <option value="${repairForm.status}" selected>
 
         </option>
-                  <option value="1">PENDING</option>
-                  <option value="2">IN PROGRESS</option>
-                  <option value="3">COMPLETED</option>
+            <option value="PENDING" <#if repairForm.type=="PENDING">selected</#if>>PENDING</option>
+            <option value="IN PROGRESS" <#if repairForm.type=="IN PROGRESS">selected</#if>>IN PROGRESS</option>
+            <option value="COMPLETED" <#if repairForm.type=="COMPLETED">selected</#if>>COMPLETED</option>
         </select>
 
         <label for="type">Type</label>
         <select name="type">
-        	<option value="NORMAL" <#if repairForm.type=="NORMAL">selected</#if>>NORMAL</option>
         	<option value="SMALL" <#if repairForm.type=="SMALL">selected</#if>>SMALL</option>
         	<option value="BIG" <#if repairForm.type=="BIG">selected</#if>>BIG</option>
         </select>
