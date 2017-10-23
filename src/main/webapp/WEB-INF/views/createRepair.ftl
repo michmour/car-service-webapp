@@ -8,15 +8,15 @@
 
         <label for="status">Status</label>
         <select name="status">
-                  <option value="1">PENDING</option>
-                  <option value="2">IN PROGRESS</option>
-                  <option value="3">COMPLETED</option>
+                  <option value="PENDING">PENDING</option>
+                  <option value="IN PROGRESS">IN PROGRESS</option>
+                  <option value="COMPLETED">COMPLETED</option>
         </select>
 
         <label for="type">Type</label>
         <select name="type">
-                         <option value="1">SMALL</option>
-                         <option value="2">BIG</option>
+                         <option value="SMALL">SMALL</option>
+                         <option value="BIG">BIG</option>
         </select>
 
         <label for="servicecost">Service Cost</label>
