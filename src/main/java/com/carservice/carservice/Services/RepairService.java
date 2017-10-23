@@ -10,6 +10,8 @@ public interface RepairService {
 
     List<Repair> findAll();
 
+    User findOneUserId(Long serviceid);
+
     Repair findOne(Long serviceid);
 
     void delete(Repair user);

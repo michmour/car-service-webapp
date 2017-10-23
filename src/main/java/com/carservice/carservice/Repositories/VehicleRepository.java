@@ -14,6 +14,5 @@ public interface VehicleRepository extends JpaRepository<Vehicle,Long> {
 
     // List<Repair> findOne(@Param("serviceid")long serviceid);
 
-    Vehicle save(Vehicle vehicle);
 
 }

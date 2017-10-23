@@ -16,7 +16,6 @@ public class RepairConverter {
         repair.setType(repairForm.getType());
         repair.setDetails(repairForm.getDetails());
         repair.setUserelid(repairForm.getUserelid());
-        repair.setServiceid(repairForm.getServiceid());
 
         return repair;
     }

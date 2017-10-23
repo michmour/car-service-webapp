@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -84,7 +86,7 @@ public class RepairController {
         }
 
         @PostMapping("/repairs/{id}")
-        public String updateRepair(@Valid @ModelAttribute(REPAIR_FORM)RepairForm repairForm,@PathVariable(value = "id") Long repairid,
+        public String updateRepair(@Valid @ModelAttribute(REPAIR_FORM)RepairForm repairForm,@PathVariable(value = "id") Long serviceid,
                                  BindingResult bindingResult, HttpSession session,
                                  RedirectAttributes redirectAttributes) {
 
@@ -93,6 +95,7 @@ public class RepairController {
                 return "index";
             }
 
+                repairForm.setUserelid(repairService.findOneUserId(serviceid));
                 Repair repair = RepairConverter.buildRepairObject(repairForm);
                 repairService.save(repair);
               //  session.setAttribute("name", repairForm.getName());
@@ -102,11 +105,11 @@ public class RepairController {
         }
 
         @PostMapping("repairs/{id}/delete")
-        public String deleteRepair(@ModelAttribute(REPAIR_FORM)RepairForm repairForm, @PathVariable(value = "id") Long repairid,
+        public String deleteRepair(@ModelAttribute(REPAIR_FORM)RepairForm repairForm, @PathVariable(value = "id") Long serviceid,
                                  BindingResult bindingResult, HttpSession session,
                                  RedirectAttributes redirectAttributes) {
 
-            Repair repairToDelete= repairService.findOne(repairid);
+            Repair repairToDelete= repairService.findOne(serviceid);
 
             if (bindingResult.hasErrors()) {
                 return "index";
@@ -131,9 +134,9 @@ public class RepairController {
 //    }
 
 //    @GetMapping("/repairs/{id}")
-//    public String findById(Model model,@PathVariable(value = "id") Long repairid) {
+//    public String findById(Model model,@PathVariable(value = "id") Long serviceid) {
 //
-//        List<Repair> usersList= repairService.findOne(repairid);
+//        List<Repair> usersList= repairService.findOne(serviceid);
 //
 //        model.addAttribute("repairs", usersList);
 //        return  "index";

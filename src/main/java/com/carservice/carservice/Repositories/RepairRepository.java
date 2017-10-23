@@ -4,6 +4,7 @@ import com.carservice.carservice.Domain.Repair;
 import com.carservice.carservice.Domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,8 +16,8 @@ public interface RepairRepository extends JpaRepository<Repair, Long> {
 
     List<Repair> findAll();
 
-   // List<Repair> findOne(@Param("serviceid")long serviceid);
+    @Query("SELECT userelid FROM Repair WHERE serviceid = :serviceid")
+    User findOneUserId(@Param("serviceid")long serviceid);
 
-    Repair save(Repair repair);
 
 }
