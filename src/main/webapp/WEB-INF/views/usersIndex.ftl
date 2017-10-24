@@ -1,6 +1,6 @@
 <#include "/includes/header.ftl">
 <div id="wrapper">
-<#include "/includes/admin_navigation.ftl">
+<#include "/includes/user_navigation.ftl">
     <div id="page-wrapper">
 
         <div class="container-fluid">
@@ -24,8 +24,6 @@
                             <td>Service Date</td>
                             <td>Status</td>
                             <td>Type</td>
-                            <td>Edit User</td>
-                            <td>Delete User</td>
                         </tr>
                         </thead>
                     <tbody>
@@ -39,10 +37,6 @@
                             <td>${repair.servicedate}</td>
                             <td>${repair.status}</td>
                             <td>${repair.type}</td>
-                            <td> <a href="repairs/${repair.serviceid}/edit">Edit</a></td>
-                            <form action="repairs/${repair.serviceid}/delete" method="post" name="deleteUser" onsubmit="return confirm('We will delete this user!');">
-                                <input type="hidden" name="serviceid" value="${repair.serviceid}"/>
-                                <td><button type="submit"> Delete</button></td>
                             </form>
                         </tr>
                         </#list>

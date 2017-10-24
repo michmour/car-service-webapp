@@ -1,3 +1,6 @@
+<script>
+    document.title = 'CS - Add Repair';
+</script>
 <#include "/includes/header.ftl">
 <div id="wrapper">
 <#include "/includes/admin_navigation.ftl">

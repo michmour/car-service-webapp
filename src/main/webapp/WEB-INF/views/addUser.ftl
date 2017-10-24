@@ -1,3 +1,7 @@
+<script>
+    document.title = 'CS - User Add';
+</script>
+
 <#include "/includes/header.ftl">
 <div id="wrapper">
 <#include "/includes/admin_navigation.ftl">

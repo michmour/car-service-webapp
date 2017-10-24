@@ -1,3 +1,7 @@
+<script>
+    document.title = 'CS - All Repairs';
+</script>
+
 <#include "/includes/header.ftl">
 <div id="wrapper">
 <#include "/includes/admin_navigation.ftl">
@@ -42,7 +46,7 @@
                             <td>${repair.type}</td>
                             <td>${repair.userelid.name} ${repair.userelid.surname}</td>
                             <td> <a href="repairs/${repair.serviceid}/edit">Edit</a></td>
-                            <form action="repairs/${repair.serviceid}/delete" method="post" name="deleteUser" onsubmit="return confirm('We will delete this user!');">
+                            <form action="repairs/${repair.serviceid}/delete" method="post" name="deleteUser" onsubmit="return confirm('We will delete this repair!');">
                                 <input type="hidden" name="serviceid" value="${repair.serviceid}"/>
                                 <td><button type="submit"> Delete</button></td>
                             </form>
