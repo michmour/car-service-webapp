@@ -35,7 +35,7 @@ public class RepairController {
         private UserService userService;
 
 
-        @GetMapping("/repairs")
+        @GetMapping("/admin/repairs")
         public String repairsIndex(Model model) {
 
 
@@ -44,7 +44,7 @@ public class RepairController {
             model.addAttribute("repairs", repairsList);
 
 
-            return "index";
+            return "allRepairs";
         }
 
         @GetMapping("/repairs/add")

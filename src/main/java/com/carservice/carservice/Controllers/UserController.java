@@ -44,7 +44,7 @@ public class UserController {
 
 
         model.addAttribute(USER_FORM, userService.findOne(userid) );
-        return "updateUser";
+        return "edituser";
     }
 
     @PostMapping("/admin/users")

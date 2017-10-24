@@ -7,22 +7,22 @@
 
 
         <label for="name">First Name</label>
-        <input type="text" name="name" id="name" value="${userForm.name}" placeholder="name"/>
+        <input type="text" class="form-control" name="name" id="name" value="${userForm.name}" placeholder="name"/>
 
         <label for="surname">Last Name</label>
-        <input type="text" name="surname" id="name"  value="${userForm.surname}" placeholder="surname"/>
+        <input type="text"class="form-control" name="surname" id="name"  value="${userForm.surname}" placeholder="surname"/>
 
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" value="${userForm.email}" placeholder="email"/>
+        <input type="email" class="form-control" name="email" id="email" value="${userForm.email}" placeholder="email"/>
 
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" value="${userForm.password}" placeholder="password"/>
+        <input type="password" class="form-control" name="password" id="password" value="${userForm.password}" placeholder="password"/>
 
         <label for="ssn">Ssn</label>
-        <input type="text" name="ssn" id="ssn" value="${userForm.ssn}" placeholder="ssn"/>
+        <input type="text" class="form-control" name="ssn" id="ssn" value="${userForm.ssn}" placeholder="ssn"/>
 
         <label for="address">Address</label>
-        <input type="text" name="address" id="address" value="${userForm.address}" placeholder="address"/>
+        <input type="text" class="form-control" name="address" id="address" value="${userForm.address}" placeholder="address"/>
 
         <input type="hidden" name="usertype" value="${userForm.usertype}"/>
 
