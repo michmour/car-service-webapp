@@ -36,13 +36,13 @@
                 <a href="index.php"><i class="fa fa-fw fa-calendar"></i> Dashboard</a>
             </li>
             <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#posts_dropdown"><i class="fa fa-fw fa-arrows-v"></i> Services <i class="fa fa-fw fa-caret-down"></i></a>
+                <a href="javascript:;" data-toggle="collapse" data-target="#posts_dropdown"><i class="fa fa-fw fa-arrows-v"></i> Repairs <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="posts_dropdown" class="collapse">
                     <li>
-                        <a href="posts.php">View All Services</a>
+                        <a href="/admin/repairs">View All Repairs</a>
                     </li>
                     <li>
-                        <a href="posts.php?source=add_post">Add Service</a>
+                        <a href="/admin/repairs/add">Add Repair</a>
                     </li>
                 </ul>
             </li>

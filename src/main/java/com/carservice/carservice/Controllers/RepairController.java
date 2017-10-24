@@ -43,35 +43,34 @@ public class RepairController {
 
             model.addAttribute("repairs", repairsList);
 
-
             return "allRepairs";
         }
 
-        @GetMapping("/repairs/add")
+        @GetMapping("/admin/repairs/add")
         public String repairAddForm(Model model) {
 
             List<User> usersList= userService.findAll();
             model.addAttribute(REPAIR_FORM, new RepairForm());
             model.addAttribute("usersList", usersList);
-            return "createRepair";
+            return "addRepair";
         }
 
-        @GetMapping("/repairs/{id}/edit")
+        @GetMapping("/admin/repairs/{id}/edit")
         public String repairEditForm(Model model, @PathVariable(value = "id") Long serviceid, @ModelAttribute(REPAIR_FORM)RepairForm repairForm ) {
 
 
 
             model.addAttribute(REPAIR_FORM, repairService.findOne(serviceid) );
-            return "updateRepair";
+            return "editRepair";
         }
 
-        @PostMapping("/repairs")
+        @PostMapping("/admin/repairs")
         public String addRepair(@Valid @ModelAttribute(REPAIR_FORM)RepairForm repairForm,
                               BindingResult bindingResult, HttpSession session,
                               RedirectAttributes redirectAttributes) {
 
             if (bindingResult.hasErrors()) {
-                return "createUser";
+                return "addRepair";
             }
 
                 Repair repair = RepairConverter.buildRepairObject(repairForm);
@@ -81,11 +80,11 @@ public class RepairController {
 
 
         //    redirectAttributes.addFlashAttribute("message", "You have sucessfully completed registration");
-            return "redirect:/repairs";
+            return "redirect:/admin/repairs";
 
         }
 
-        @PostMapping("/repairs/{id}")
+        @PostMapping("/admin/repairs/{id}")
         public String updateRepair(@Valid @ModelAttribute(REPAIR_FORM)RepairForm repairForm,@PathVariable(value = "id") Long serviceid,
                                  BindingResult bindingResult, HttpSession session,
                                  RedirectAttributes redirectAttributes) {
@@ -100,11 +99,11 @@ public class RepairController {
                 repairService.save(repair);
               //  session.setAttribute("name", repairForm.getName());
 
-            return "redirect:/repairs";
+            return "redirect:/admin/repairs";
 
         }
 
-        @PostMapping("repairs/{id}/delete")
+        @PostMapping("/admin/repairs/{id}/delete")
         public String deleteRepair(@ModelAttribute(REPAIR_FORM)RepairForm repairForm, @PathVariable(value = "id") Long serviceid,
                                  BindingResult bindingResult, HttpSession session,
                                  RedirectAttributes redirectAttributes) {
@@ -118,7 +117,7 @@ public class RepairController {
                 repairService.delete(repairToDelete);
           //      session.setAttribute("name", repairForm.getName());
 
-            return "redirect:/repairs";
+            return "redirect:/admin/repairs";
 
         }
 //    @PostMapping("/repairs")

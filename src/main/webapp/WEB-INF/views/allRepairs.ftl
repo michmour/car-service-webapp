@@ -24,7 +24,7 @@
                             <td>Service Date</td>
                             <td>Status</td>
                             <td>Type</td>
-                            <td>User ID</td>
+                            <td>User Credentials</td>
                             <td>Edit User</td>
                             <td>Delete User</td>
                         </tr>
@@ -40,10 +40,10 @@
                             <td>${repair.servicedate}</td>
                             <td>${repair.status}</td>
                             <td>${repair.type}</td>
-                            <td>${repair.userelid}</td>
-                            <td> <a href="users/${repair.userid}/edit">Edit</a></td>
-                            <form action="users/${user.userid}/delete" method="post" name="deleteUser" onsubmit="return confirm('We will delete this user!');">
-                                <input type="hidden" name="userid" value="${user.userid}"/>
+                            <td>${repair.userelid.name} ${repair.userelid.surname}</td>
+                            <td> <a href="repairs/${repair.serviceid}/edit">Edit</a></td>
+                            <form action="repairs/${repair.serviceid}/delete" method="post" name="deleteUser" onsubmit="return confirm('We will delete this user!');">
+                                <input type="hidden" name="serviceid" value="${repair.serviceid}"/>
                                 <td><button type="submit"> Delete</button></td>
                             </form>
                         </tr>
