@@ -12,6 +12,11 @@ public interface UserService {
 
     User findOne(Long userid);
 
+    User findUserRepairs(Long userid);
+
+    User findUserByEmail(String email);
+
+
 
     //LOGIN-LOGOUT
 

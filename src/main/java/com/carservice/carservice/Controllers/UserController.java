@@ -1,10 +1,14 @@
 package com.carservice.carservice.Controllers;
 
 import com.carservice.carservice.Converters.UserConverter;
+import com.carservice.carservice.Domain.Repair;
 import com.carservice.carservice.Domain.User;
+import com.carservice.carservice.Services.RepairService;
 import com.carservice.carservice.Services.UserService;
 import com.carservice.carservice.Models.UserForm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,15 +27,26 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/user/profile")
+    public String usersIndex(Model model) {
+
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            User userRepairs = userService.findUserByEmail(authentication.getName());
+            model.addAttribute("userRepairs", userRepairs);
+
+            return "usersIndex";
+    }
 
     @GetMapping("/admin/users")
-    public String usersIndex(Model model) {
+    public String adminIndex(Model model) {
 
         List<User> usersList= userService.findAll();
         model.addAttribute("users", usersList);
 
         return "allUsers";
     }
+
+
 
     @GetMapping("/admin/users/add")
     public String userAddForm(Model model) {

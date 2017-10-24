@@ -19,6 +19,9 @@ import java.util.List;
 
        // List<User> findAll();
 
+        User findUserByEmail(String email);
+
+
         User findByEmailAndPassword(String email, String password);
 
         @Query("SELECT name FROM User WHERE userid = :userid")

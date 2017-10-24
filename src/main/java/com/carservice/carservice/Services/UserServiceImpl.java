@@ -1,5 +1,6 @@
 package com.carservice.carservice.Services;
 
+import com.carservice.carservice.Domain.Repair;
 import com.carservice.carservice.Domain.User;
 import com.carservice.carservice.Exceptions.InvalidCredentialsException;
 import com.carservice.carservice.Repositories.UserRepository;
@@ -23,7 +24,8 @@ import java.util.Set;
         @Autowired
         private UserRepository userRepository;
 
-
+        @Override
+        public User findUserByEmail(String email){return userRepository.findUserByEmail(email);}
         @Override
         public List<User> findAll() {
             return userRepository.findAll();
@@ -31,6 +33,11 @@ import java.util.Set;
 
         @Override
         public User findOne(Long userid){ return userRepository.findOne(userid);}
+
+        @Override
+        public User findUserRepairs(Long userid) {
+            return userRepository.findOne(userid);
+        }
 
 
     //LOGIN-LOGOUT
@@ -61,5 +68,5 @@ import java.util.Set;
         public void save(User user) {
             userRepository.save(user);
         }
+        
     }
-
