@@ -41,6 +41,9 @@
                     <li>
                         <a href="/admin/repairs/add">Add Repair</a>
                     </li>
+                    <li>
+                        <a href="/admin/repairs/search">Search Repair</a>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -52,6 +55,9 @@
                     <li>
                         <a href="/admin/users/add">Add User</a>
                     </li>
+                    <li>
+                        <a href="/admin/users/search">Search User</a>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -62,6 +68,9 @@
                     </li>
                     <li>
                         <a href="/admin/vehicles/add">Add Vehicle</a>
+                    </li>
+                    <li>
+                        <a href="/admin/vehicles/search">Search Vehicle</a>
                     </li>
                 </ul>
             </li>

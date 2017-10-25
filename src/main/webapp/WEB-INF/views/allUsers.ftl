@@ -17,24 +17,6 @@
                         All Users
                         </h1>
 
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="input-group">
-                            <span class="input-group-btn">
-                                    <button id="getUsers" class="btn btn-secondary" type="button">Go!</button>
-                                </span>
-                                <input type="text" class="form-control" placeholder="Search by SSN">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search by EMAIL">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-secondary" type="button">Go!</button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
                     <br>
 
 
