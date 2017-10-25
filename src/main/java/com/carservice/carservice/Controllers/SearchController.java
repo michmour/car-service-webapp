@@ -1,20 +1,12 @@
 package com.carservice.carservice.Controllers;
 
-import com.carservice.carservice.Domain.Repair;
 import com.carservice.carservice.Domain.User;
 import com.carservice.carservice.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 
@@ -26,16 +18,20 @@ public class SearchController {
     private UserService userService;
 
 
-
-
-    @GetMapping(value="/admin/search/users", produces = "application/json")
-    public List<User> getAllUsers(Model model){
-
-       //  model.addAttribute("usersList",userService.findNameById());
-
-
-        return userService.findNameById();
+    @GetMapping("/admin/search/users")
+    public ResponseEntity<List<User>> getBooks() {
+        List<User> searchList = userService.searchAll();
+        return new ResponseEntity<>(searchList, HttpStatus.OK);
     }
+
+//    @GetMapping(value="/admin/search/users", produces = "application/json")
+//    public List<User> getAllUsers(Model model){
+//
+//       //  model.addAttribute("usersList",userService.findNameById());
+//
+//
+//        return userService.findNameById();
+//    }
 
 
 

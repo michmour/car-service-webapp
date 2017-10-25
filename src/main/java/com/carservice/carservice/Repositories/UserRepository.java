@@ -7,9 +7,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 
-    @Repository
+@Repository
 
    // @RepositoryRestResource(collectionResourceRel = "user", path = "user")
 
@@ -24,8 +25,8 @@ import java.util.List;
 
         User findByEmailAndPassword(String email, String password);
 
-        @Query("SELECT name, surname, email, ssn, address FROM User")
-        List<User> findNameById();
+
+        List<User> findAll();
 
 //        @Query("SELECT surname FROM User WHERE userid = :userid")
 //        String findSurnameById(@Param("userid") Long userid);

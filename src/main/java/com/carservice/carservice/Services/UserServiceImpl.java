@@ -31,10 +31,10 @@ import java.util.Set;
         }
 
         @Override
-        public List<User> findNameById() {
-            return userRepository.findNameById();
-        }
 
+        public List<User> searchAll() {
+            return userRepository.findAll();
+        }
         @Override
         public User findOne(Long userid){ return userRepository.findOne(userid);}
 
