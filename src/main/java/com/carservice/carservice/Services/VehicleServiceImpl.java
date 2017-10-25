@@ -1,5 +1,6 @@
 package com.carservice.carservice.Services;
 
+import com.carservice.carservice.Domain.User;
 import com.carservice.carservice.Domain.Vehicle;
 import com.carservice.carservice.Repositories.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ public class VehicleServiceImpl implements VehicleService {
         @Autowired
         private VehicleRepository vehicleRepository;
 
+        @Override
+        public User findOneUserId(Long vehicleid){return vehicleRepository.findOneUserId(vehicleid);}
 
         @Override
         public List<Vehicle> findAll() {

@@ -41,7 +41,7 @@ public class VehicleController {
         return "allVehicles";
     }
 
-    @GetMapping("admin/vehicles/add")
+    @GetMapping("/admin/vehicles/add")
     public String vehicleAddForm(Model model) {
         List<User> usersList= userService.findAll();
         model.addAttribute(VEHICLE_FORM, new VehicleForm());
@@ -49,7 +49,7 @@ public class VehicleController {
         return "addVehicle";
     }
 
-    @GetMapping("admin/vehicles/{id}/edit")
+    @GetMapping("/admin/vehicles/{id}/edit")
     public String vehicleEditForm(Model model, @PathVariable(value = "id") Long vehicleid, @ModelAttribute(VEHICLE_FORM)VehicleForm vehicleForm ) {
 
         // model.addAttribute("user", vehicleid);
@@ -76,7 +76,7 @@ public class VehicleController {
 //            vehicleForm.setServicescollection(servicescollection);
 
         model.addAttribute(VEHICLE_FORM, vehicleService.findOne(vehicleid) );
-        return "updateVehicle";
+        return "editVehicle";
     }
 
     @PostMapping("/admin/vehicles")
@@ -111,7 +111,7 @@ public class VehicleController {
         if (bindingResult.hasErrors()) {
             return "index";
         }
-
+        vehicleForm.setUserelid(vehicleService.findOneUserId(vehicleid));
         Vehicle vehicle = VehicleConverter.buildVehicleObject(vehicleForm);
         vehicleService.save(vehicle);
         //  session.setAttribute("name", vehicleForm.getName());

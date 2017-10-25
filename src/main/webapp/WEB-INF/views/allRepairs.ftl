@@ -44,7 +44,7 @@
                             <td>${repair.status}</td>
                             <td>${repair.type}</td>
                             <td>${repair.userelid.name} ${repair.userelid.surname}</td>
-                            <td><button class="btn btn-success" type="submit"> <a id="white" href="repairs/${repair.serviceid}/edit">Edit</button></a></td>
+                            <td><a class="btn btn-success btn-md active" role="button" id="white" href="repairs/${repair.serviceid}/edit">Edit</a></td>
                             <form action="repairs/${repair.serviceid}/delete" method="post" name="deleteUser" onsubmit="return confirm('We will delete this repair!');">
                                 <input type="hidden" name="serviceid" value="${repair.serviceid}"/>
                                 <td><button class="btn btn-danger" type="submit"> Delete</button></td>

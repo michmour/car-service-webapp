@@ -63,7 +63,7 @@
                             <td>${user.address}</td>
                             <td>${user.email}</td>
                             <td>${user.usertype}</td>
-                            <td> <button class="btn btn-success" type="submit"> <a id="white" href="users/${user.userid}/edit">Edit</button></a></td>
+                            <td> <a class="btn btn-success btn-md active" role="button" id="white" href="users/${user.userid}/edit">Edit</a></td>
                             <form action="users/${user.userid}/delete" method="post" name="deleteUser" onsubmit="return confirm('We will delete this user!');">
                                 <input type="hidden" name="userid" value="${user.userid}"/>
                                 <td><button class="btn btn-danger" type="submit"> Delete</button></td>

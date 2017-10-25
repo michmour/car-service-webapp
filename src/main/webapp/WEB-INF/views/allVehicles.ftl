@@ -42,7 +42,7 @@
                             <td>${vehicle.vehiclemodel}</td>
                             <td>${vehicle.year}</td>
                             <td>${vehicle.userelid.name} ${vehicle.userelid.surname}</td>
-                            <td><button class="btn btn-success" type="submit"> <a id="white" href="vehicles/${vehicle.vehicleid}/edit">Edit</button></a></td>
+                            <td><a class="btn btn-success btn-md active" role="button" href="vehicles/${vehicle.vehicleid}/edit" id="white" > Edit </a> </td>
                             <form action="vehicles/${vehicle.vehicleid}/delete" method="post" name="deleteUser" onsubmit="return confirm('We will delete this vehicle!');">
                                 <input type="hidden" name="vehicleid" value="${vehicle.vehicleid}"/>
                                 <td><button class="btn btn-danger" type="submit"> Delete</button></td>
