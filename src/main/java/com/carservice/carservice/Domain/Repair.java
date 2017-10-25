@@ -8,6 +8,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.Future;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -21,6 +22,7 @@ public class Repair implements Serializable {
     @Column(name = "serviceid", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long serviceid;
+
 
     @Column(name = "servicedate")
     private LocalDateTime servicedate;

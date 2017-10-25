@@ -34,14 +34,13 @@
                         </tr>
                         </thead>
                     <tbody>
-
-                        <#list repairs as repair>
+                        <#list repairs.content as repair>
 
                         <tr>
                             <td>${repair.serviceid}</td>
                             <td>${repair.details}</td>
                             <td>${repair.servicecost}</td>
-                            <td>${repair.servicedate}</td>
+                            <td>${repair.servicedate?datetime.iso?string["EEEE, MMMM dd, yyyy, HH:mm "]}</td>
                             <td>${repair.status}</td>
                             <td>${repair.type}</td>
                             <td>${repair.userelid.name} ${repair.userelid.surname}</td>
