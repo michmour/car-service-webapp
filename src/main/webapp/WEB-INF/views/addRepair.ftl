@@ -13,7 +13,7 @@
                 <div class="col-lg-12">
 
                     <h1 class="page-header">
-                        Welcome to Admin Area
+                        Add Repair
                     </h1>
 
                     <form action="/admin/repairs" method="post" id="repairForm" name="addRepair">

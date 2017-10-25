@@ -15,7 +15,7 @@ import java.util.Collection;
 @Component
 public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
-    private String ADMIN_SUCCESS_URL = "/admin/users";
+    private String ADMIN_SUCCESS_URL = "/admin/index";
     private String DEFAULT_SUCCESS_URL = "/user/profile";
 
 

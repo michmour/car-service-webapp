@@ -1,3 +1,7 @@
+<script>
+    document.title = 'CS - Edit Repair';
+</script>
+
 <#include "/includes/header.ftl">
 <div id="wrapper">
 <#include "/includes/admin_navigation.ftl">
@@ -10,7 +14,7 @@
                 <div class="col-lg-12">
 
                     <h1 class="page-header">
-                        Welcome to Admin Area
+                        Edit Repair
                     </h1>
 
                     <form action="/admin/repairs/${repairForm.serviceid}" method="post" id="repairEditForm" name="repairEditForm">

@@ -1,3 +1,7 @@
+<script>
+    document.title = 'CS - Edit User';
+</script>
+
 <#include "/includes/header.ftl">
 <div id="wrapper">
 <#include "/includes/admin_navigation.ftl">
@@ -10,7 +14,7 @@
                 <div class="col-lg-12">
 
                     <h1 class="page-header">
-                        Welcome to Admin Area
+                        Edit User
                     </h1>
 
                     <form action="/admin/users/${userForm.userid}" method="post"

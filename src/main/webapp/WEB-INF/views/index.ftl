@@ -1,3 +1,7 @@
+<script>
+    document.title = 'CS - Index';
+</script>
+
 <#include "/includes/header.ftl">
 <div id="wrapper">
 <#include "/includes/admin_navigation.ftl">
@@ -15,34 +19,35 @@
 
 
                     <table class="table table-bordered table-hover">
-                    <#if users??>
+                    <#if repairs??>
                         <thead>
                         <tr>
-                            <td>ID</td>
-                            <td>First Name</td>
-                            <td>Last Name</td>
-                            <td>Address</td>
-                            <td>Email</td>
-                            <td>Role</td>
+                            <td>Service ID</td>
+                            <td>Details</td>
+                            <td>Service Cost</td>
+                            <td>Service Date</td>
+                            <td>Status</td>
+                            <td>Type</td>
+                            <td>User Credentials</td>
                             <td>Edit User</td>
                             <td>Delete User</td>
                         </tr>
                         </thead>
                     <tbody>
-
-                        <#list users as user>
+                        <#list repairs.content as repair>
 
                         <tr>
-                            <td>${user.userid}</td>
-                            <td>${user.name}</td>
-                            <td>${user.surname}</td>
-                            <td>${user.address}</td>
-                            <td>${user.email}</td>
-                            <td>${user.usertype}</td>
-                            <td> <a href="users/${user.userid}/edit">Edit</a></td>
-                            <form action="users/${user.userid}/delete" method="post" name="deleteUser" onsubmit="return confirm('We will delete this user!');">
-                                <input type="hidden" name="userid" value="${user.userid}"/>
-                                <td><button type="submit"> Delete</button></td>
+                            <td>${repair.serviceid}</td>
+                            <td>${repair.details}</td>
+                            <td>${repair.servicecost}</td>
+                            <td>${repair.servicedate?datetime.iso?string["EEEE, MMMM dd, yyyy, HH:mm "]}</td>
+                            <td>${repair.status}</td>
+                            <td>${repair.type}</td>
+                            <td>${repair.userelid.name} ${repair.userelid.surname}</td>
+                            <td><button class="btn btn-success" type="submit"> <a id="white" href="repairs/${repair.serviceid}/edit">Edit</button></a></td>
+                            <form action="repairs/${repair.serviceid}/delete" method="post" name="deleteUser" onsubmit="return confirm('We will delete this repair!');">
+                                <input type="hidden" name="serviceid" value="${repair.serviceid}"/>
+                                <td><button class="btn btn-danger" type="submit"> Delete</button></td>
                             </form>
                         </tr>
                         </#list>

@@ -14,7 +14,7 @@
                 <div class="col-lg-12">
 
                     <h1 class="page-header">
-                        Welcome to Admin
+                        All Users
                         </h1>
 
                     <div class="row">
@@ -63,10 +63,10 @@
                             <td>${user.address}</td>
                             <td>${user.email}</td>
                             <td>${user.usertype}</td>
-                            <td> <a href="users/${user.userid}/edit">Edit</a></td>
+                            <td> <button class="btn btn-success" type="submit"> <a id="white" href="users/${user.userid}/edit">Edit</button></a></td>
                             <form action="users/${user.userid}/delete" method="post" name="deleteUser" onsubmit="return confirm('We will delete this user!');">
                                 <input type="hidden" name="userid" value="${user.userid}"/>
-                                <td><button type="submit"> Delete</button></td>
+                                <td><button class="btn btn-danger" type="submit"> Delete</button></td>
                             </form>
                         </tr>
                         </#list>

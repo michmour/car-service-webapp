@@ -1,8 +1,10 @@
 package com.carservice.carservice.Controllers;
 
 import com.carservice.carservice.Converters.VehicleConverter;
+import com.carservice.carservice.Domain.User;
 import com.carservice.carservice.Domain.Vehicle;
 import com.carservice.carservice.Models.VehicleForm;
+import com.carservice.carservice.Services.UserService;
 import com.carservice.carservice.Services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,23 +28,28 @@ public class VehicleController {
     @Autowired
     private VehicleService vehicleService;
 
+    @Autowired
+    private UserService userService;
 
-    @GetMapping("/vehicles")
+
+    @GetMapping("/admin/vehicles")
     public String vehiclesIndex(Model model) {
 
-        List<Vehicle> repairsList= vehicleService.findAll();
-        model.addAttribute("repairs", repairsList);
+        List<Vehicle> vehiclesList= vehicleService.findAll();
+        model.addAttribute("vehiclesList", vehiclesList);
 
-        return "index";
+        return "allVehicles";
     }
 
-    @GetMapping("/vehicles/add")
+    @GetMapping("admin/vehicles/add")
     public String vehicleAddForm(Model model) {
+        List<User> usersList= userService.findAll();
         model.addAttribute(VEHICLE_FORM, new VehicleForm());
-        return "createVehicle";
+        model.addAttribute("usersList", usersList);
+        return "addVehicle";
     }
 
-    @GetMapping("/vehicles/{id}/edit")
+    @GetMapping("admin/vehicles/{id}/edit")
     public String vehicleEditForm(Model model, @PathVariable(value = "id") Long vehicleid, @ModelAttribute(VEHICLE_FORM)VehicleForm vehicleForm ) {
 
         // model.addAttribute("user", vehicleid);
@@ -72,13 +79,13 @@ public class VehicleController {
         return "updateVehicle";
     }
 
-    @PostMapping("/vehicles")
+    @PostMapping("/admin/vehicles")
     public String addVehicle(@Valid @ModelAttribute(VEHICLE_FORM)VehicleForm vehicleForm,
                           BindingResult bindingResult, HttpSession session,
                           RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
-            return "createUser";
+            return "addVehicle";
         }
 
         Vehicle vehicle = VehicleConverter.buildVehicleObject(vehicleForm);
@@ -88,11 +95,11 @@ public class VehicleController {
 
 
         //    redirectAttributes.addFlashAttribute("message", "You have sucessfully completed registration");
-        return "redirect:/vehicles";
+        return "redirect:/admin/vehicles";
 
     }
 
-    @PostMapping("/vehicles/{id}")
+    @PostMapping("/admin/vehicles/{id}")
     public String updateVehicle(@Valid @ModelAttribute(VEHICLE_FORM)VehicleForm vehicleForm, @PathVariable(value = "id") Long vehicleid,
                                BindingResult bindingResult, HttpSession session,
                                RedirectAttributes redirectAttributes) {
@@ -109,11 +116,11 @@ public class VehicleController {
         vehicleService.save(vehicle);
         //  session.setAttribute("name", vehicleForm.getName());
 
-        return "redirect:/vehicles";
+        return "redirect:/admin/vehicles";
 
     }
 
-    @PostMapping("vehicles/{id}/delete")
+    @PostMapping("/admin/vehicles/{id}/delete")
     public String deleteVehicle(@ModelAttribute(VEHICLE_FORM)VehicleForm vehicleForm, @PathVariable(value = "id") Long vehicleid,
                                BindingResult bindingResult, HttpSession session,
                                RedirectAttributes redirectAttributes) {
@@ -127,7 +134,7 @@ public class VehicleController {
         vehicleService.delete(vehicleToDelete);
         //      session.setAttribute("name", vehicleForm.getName());
 
-        return "redirect:/vehicles";
+        return "redirect:/admin/vehicles";
 
     }
 //    @PostMapping("/repairs")

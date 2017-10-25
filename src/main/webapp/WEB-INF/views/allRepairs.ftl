@@ -14,7 +14,7 @@
                 <div class="col-lg-12">
 
                     <h1 class="page-header">
-                        Welcome to Admin Area
+                        All Repairs
                     </h1>
 
 
@@ -34,7 +34,7 @@
                         </tr>
                         </thead>
                     <tbody>
-                        <#list repairs.content as repair>
+                        <#list repairs as repair>
 
                         <tr>
                             <td>${repair.serviceid}</td>
@@ -44,10 +44,10 @@
                             <td>${repair.status}</td>
                             <td>${repair.type}</td>
                             <td>${repair.userelid.name} ${repair.userelid.surname}</td>
-                            <td> <a href="repairs/${repair.serviceid}/edit">Edit</a></td>
+                            <td><button class="btn btn-success" type="submit"> <a id="white" href="repairs/${repair.serviceid}/edit">Edit</button></a></td>
                             <form action="repairs/${repair.serviceid}/delete" method="post" name="deleteUser" onsubmit="return confirm('We will delete this repair!');">
                                 <input type="hidden" name="serviceid" value="${repair.serviceid}"/>
-                                <td><button type="submit"> Delete</button></td>
+                                <td><button class="btn btn-danger" type="submit"> Delete</button></td>
                             </form>
                         </tr>
                         </#list>

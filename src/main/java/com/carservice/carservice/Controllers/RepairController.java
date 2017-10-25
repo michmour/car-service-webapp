@@ -43,11 +43,24 @@ public class RepairController {
         public String repairsIndex(Model model) {
 
 
-            Page<Repair> repairsList= repairService.getTenRepairs();
+            List<Repair> repairsList = repairService.findAll();
 
             model.addAttribute("repairs", repairsList);
 
             return "allRepairs";
+
+        }
+
+
+        @GetMapping("/admin/index")
+        public String repairsIndexTen(Model model) {
+
+
+            Page<Repair> repairsList= repairService.getTenRepairs();
+
+            model.addAttribute("repairs", repairsList);
+
+            return "index";
         }
 
         @GetMapping("/admin/repairs/add")
