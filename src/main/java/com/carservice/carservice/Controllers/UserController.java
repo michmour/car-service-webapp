@@ -119,6 +119,12 @@ public class UserController {
 
     }
 
+    @GetMapping("/admin/search")
+    public String getUsers() {
+
+        return "searchUser";
+    }
+
 
 //    @PostMapping("/users")
 //    public void add(@Valid @RequestBody User user) {

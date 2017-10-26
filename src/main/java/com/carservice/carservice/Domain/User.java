@@ -18,6 +18,7 @@ import java.util.Set;
     @EntityListeners(AuditingEntityListener.class)
     public class User implements Serializable {
 
+        @JsonIgnore
         @Id
         @Column(name = "userid", nullable = false)
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,29 +27,37 @@ import java.util.Set;
         @Column(name = "ssn", unique=true)
         private String ssn;
 
+        @JsonIgnore
         @Column(name = "name")
         private String name;
+
 
         @Column(name = "surname")
         private String surname;
 
+        @JsonIgnore
         @Column(name = "address")
         private String address;
 
+        @JsonIgnore
         @Column(name = "email", unique=true)
         private String email;
 
+        @JsonIgnore
         @Column(name = "password")
         private String password;
 
+        @JsonIgnore
         @Column(name = "usertype")
         private String usertype;
 
+        @JsonIgnore
         @Column(name = "createdAt",nullable = false, updatable = false)
         @Temporal(TemporalType.TIMESTAMP)
         @CreatedDate
         private Date createdAt;
 
+        @JsonIgnore
         @Column(name = "updatedAt", nullable = false)
         @Temporal(TemporalType.TIMESTAMP)
         @LastModifiedDate

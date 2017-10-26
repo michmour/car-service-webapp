@@ -24,7 +24,7 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search by EMAIL">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-secondary" type="button">Go!</button>
+                                    <button id="searchbutton" class="btn btn-secondary" type="button">Go!</button>
                                 </span>
                             </div>
                         </div>
@@ -38,8 +38,14 @@
                                 </span>
                             </div>
                         </div>
-                        <br>
 
+                        <br>
+                        <table id="location" class="table table-bordered table-hover">
+                                                <tr>
+                                                    <th>ssn</th>
+                                                    <th>surname</th>
+                                                </tr>
+                                            </table>
 
 
                     </div>

@@ -1,35 +1,49 @@
-$( document ).ready(function() {
 
-	// GET REQUEST
-	$("#getUsers").click(function(event){
-		event.preventDefault();
-		ajaxGet();
-	});
+	$(document).ready(function(){
+       $('#searchbutton').click(function(){
+        jQuery.support.cors = true;
+
+        $.ajax(
+        {
+            type: "GET",
+            url: '/admin/search/users',
+            data: "[]",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            cache: false,
+            success: function (data) {
+
+			console.log("Success: ", data);
 
 
-	// DO GET
-	function ajaxGet(){
-		$.ajax({
-			type : "GET",
-			url : '/admin/search/users',
-			success: function(result){
-//				if(result.status == "Done"){
-					//$('#getResultDiv ul').empty();
-				//	var custList = "";
-				//	$.each(result.data, function(i, customer){
-				//		var customer = "- Customer with Id = " + i + ", firstname = " + customer.name + ", lastName = " + customer.surname + "<br>";
-					//	$('#getResultDiv .list-group').append(customer)
-			        });
-					console.log("Success: ", result);
-//				}else{
-//					$("#getResultDiv").html("<strong>Error</strong>");
-//					console.log("Fail: ", result);
-//				}
-			},
-			error : function(e) {
-				$("#getResultDiv").html("<strong>Error</strong>");
-				console.log("ERROR: ", e);
-			}
-		});
-	}
-})
+             var table = $("#location");
+                $.each(data, function(idx, elem){
+                    table.append("<tr><td>"+elem.ssn+"</td> <td>"+elem.surname+"</td></tr>");
+                });
+
+
+  //          var trHTML = '';
+
+//            $.each(data.surname, function (i, item) {
+//                trHTML += '<tr><td>' + item + '</td><td>' + data.ssn[i] + '</td></tr>';
+//            });
+//
+//            $('#location').append(trHTML);
+
+
+
+//            $('#location').append(
+//
+//                $.map(data.surname, function (surname, index) {
+//                    return '<tr><td>' + surname + '</td><td>' + data.ssn[index] + '</td></tr>';
+//            }).join());
+
+            },
+
+            error: function (msg) {
+
+                alert(msg.responseText);
+            }
+        });
+    });
+    });
