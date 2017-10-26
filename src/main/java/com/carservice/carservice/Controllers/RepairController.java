@@ -2,6 +2,8 @@ package com.carservice.carservice.Controllers;
 
 import com.carservice.carservice.Converters.RepairConverter;
 import com.carservice.carservice.Domain.Repair;
+import com.carservice.carservice.Domain.RepairStatus;
+import com.carservice.carservice.Domain.RepairType;
 import com.carservice.carservice.Domain.User;
 import com.carservice.carservice.Models.RepairForm;
 import com.carservice.carservice.Services.RepairService;
@@ -22,8 +24,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class RepairController {
@@ -66,8 +67,11 @@ public class RepairController {
         @GetMapping("/admin/repairs/add")
         public String repairAddForm(Model model) {
 
+
             List<User> usersList= userService.findAll();
             model.addAttribute(REPAIR_FORM, new RepairForm());
+            model.addAttribute("repairStatusList", getRepairStatusList());
+            model.addAttribute("repairTypeList", getRepairTypeList());
             model.addAttribute("usersList", usersList);
             return "addRepair";
         }
@@ -75,9 +79,9 @@ public class RepairController {
         @GetMapping("/admin/repairs/{id}/edit")
         public String repairEditForm(Model model, @PathVariable(value = "id") Long serviceid, @ModelAttribute(REPAIR_FORM)RepairForm repairForm ) {
 
-
-
             model.addAttribute(REPAIR_FORM, repairService.findOne(serviceid) );
+            model.addAttribute("repairStatusList", getRepairStatusList());
+            model.addAttribute("repairTypeList", getRepairTypeList());
             return "editRepair";
         }
 
@@ -137,6 +141,18 @@ public class RepairController {
             return "redirect:/admin/repairs";
 
         }
+
+    private Map<String, String> getRepairStatusList() {
+        Map<String, String> repairStatusMap = new LinkedHashMap<>();
+        Arrays.stream(RepairStatus.values()).forEach(repairStatus -> repairStatusMap.put(repairStatus.name(), repairStatus.getRepairStatus()));
+        return repairStatusMap;
+    }
+
+    private Map<String, String> getRepairTypeList() {
+        Map<String, String> repairTypeMap = new LinkedHashMap<>();
+        Arrays.stream(RepairType.values()).forEach(repairType -> repairTypeMap.put(repairType.name(), repairType.getRepairType()));
+        return repairTypeMap;
+    }
 
 
 //    @PostMapping("/repairs")

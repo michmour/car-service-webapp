@@ -1,6 +1,8 @@
 package com.carservice.carservice.Models;
 
 import com.carservice.carservice.Domain.Repair;
+import com.carservice.carservice.Domain.RepairStatus;
+import com.carservice.carservice.Domain.RepairType;
 import com.carservice.carservice.Domain.User;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -20,11 +22,11 @@ public class RepairForm {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime servicedate;
-    private String status;
+    private RepairStatus status;
 
     private int servicecost;
 
-    private String type;
+    private RepairType type;
     private String details;
     private User userelid;
     private Long serviceid;
@@ -37,11 +39,11 @@ public class RepairForm {
         this.servicedate = servicedate;
     }
 
-    public String getStatus() {
+    public RepairStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(RepairStatus status) {
         this.status = status;
     }
 
@@ -53,11 +55,11 @@ public class RepairForm {
         this.servicecost = servicecost;
     }
 
-    public String getType() {
+    public RepairType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(RepairType type) {
         this.type = type;
     }
 

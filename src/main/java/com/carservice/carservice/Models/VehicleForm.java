@@ -1,6 +1,7 @@
 package com.carservice.carservice.Models;
 
 import com.carservice.carservice.Domain.User;
+import com.carservice.carservice.Domain.VehicleBrands;
 
 import javax.validation.constraints.Pattern;
 
@@ -12,7 +13,7 @@ public class VehicleForm {
     @Pattern(regexp = PLATE_PATTERN, message = "{register.number.invalid}")
     private String platenumber;
 
-    private String vehiclemodel;
+    private VehicleBrands vehiclemodel;
     private String year;
     private String colour;
     private User userelid;
@@ -27,11 +28,11 @@ public class VehicleForm {
         this.platenumber = platenumber;
     }
 
-    public String getVehiclemodel() {
+    public VehicleBrands getVehiclemodel() {
         return vehiclemodel;
     }
 
-    public void setVehiclemodel(String vehiclemodel) {
+    public void setVehiclemodel(VehicleBrands vehiclemodel) {
         this.vehiclemodel = vehiclemodel;
     }
 

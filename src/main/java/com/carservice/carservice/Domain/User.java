@@ -18,7 +18,6 @@ import java.util.Set;
     @EntityListeners(AuditingEntityListener.class)
     public class User implements Serializable {
 
-        @JsonIgnore
         @Id
         @Column(name = "userid", nullable = false)
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +26,6 @@ import java.util.Set;
         @Column(name = "ssn", unique=true)
         private String ssn;
 
-        @JsonIgnore
         @Column(name = "name")
         private String name;
 
@@ -35,11 +33,9 @@ import java.util.Set;
         @Column(name = "surname")
         private String surname;
 
-        @JsonIgnore
         @Column(name = "address")
         private String address;
 
-        @JsonIgnore
         @Column(name = "email", unique=true)
         private String email;
 

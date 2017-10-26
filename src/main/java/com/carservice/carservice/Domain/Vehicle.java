@@ -22,9 +22,9 @@ public class Vehicle implements Serializable {
     @Column(name = "platenumber", unique=true)
     private String platenumber;
 
- //   @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     @Column(name = "vehiclemodel")
-    private String vehiclemodel;
+    private VehicleBrands vehiclemodel;
 
 
     @Column(name = "year")
@@ -64,7 +64,7 @@ public class Vehicle implements Serializable {
 
     }
 
-    public Vehicle(Long vehicleid, String platenumber, String vehiclemodel, String year, String colour, Date createdAt, Date updatedAt, User userelid) {
+    public Vehicle(Long vehicleid, String platenumber, VehicleBrands vehiclemodel, String year, String colour, Date createdAt, Date updatedAt, User userelid) {
         this.vehicleid = vehicleid;
         this.platenumber = platenumber;
         this.vehiclemodel = vehiclemodel;
@@ -91,11 +91,11 @@ public class Vehicle implements Serializable {
         this.platenumber = platenumber;
     }
 
-    public String getVehiclemodel() {
+    public VehicleBrands getVehiclemodel() {
         return vehiclemodel;
     }
 
-    public void setVehiclemodel(String vehiclemodel) {
+    public void setVehiclemodel(VehicleBrands vehiclemodel) {
         this.vehiclemodel = vehiclemodel;
     }
 

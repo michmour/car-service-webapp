@@ -20,10 +20,10 @@
                     <form action="/admin/vehicles/${vehicleForm.vehicleid}" method="post"
                           id= "vehicleForm" name="updateVehicle">
 
-                        <div class="form-group">
-                            <label for="vehiclemodel">Vehicle Model</label>
-                            <input type="text" class="form-control" name="vehiclemodel" value="${vehicleForm.vehiclemodel}" id="vehiclemodel" placeholder="Vehicle Model"/>
-                        </div>
+                       <div class="form-group">
+                            <label for="vehiclemodel">Model</label>
+                            <@spring.formSingleSelect path="vehicleForm.vehiclemodel" options=vehicleBrandsList attributes='class="form-control"'/>
+                       </div>
 
                         <div class="form-group">
                             <label for="colour">Colour</label>

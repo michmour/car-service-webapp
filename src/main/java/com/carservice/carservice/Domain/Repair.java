@@ -27,13 +27,13 @@ public class Repair implements Serializable {
     @Column(name = "servicedate")
     private LocalDateTime servicedate;
 
- //   @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private String status;
+    private RepairStatus status;
 
-  //  @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     @Column(name = "type")
-    private String type;
+    private RepairType type;
 
     //@Digits(integer=10, fraction=2)
     @Column(name = "servicecost")
@@ -79,7 +79,7 @@ public class Repair implements Serializable {
 
 
 
-    public Repair(Long serviceid, LocalDateTime servicedate, String status, String type, int servicecost, String details, Date createdAt, Date updatedAt, User userelid) {
+    public Repair(Long serviceid, LocalDateTime servicedate, RepairStatus status, RepairType type, int servicecost, String details, Date createdAt, Date updatedAt, User userelid) {
         this.serviceid = serviceid;
         this.servicedate = servicedate;
         this.status = status;
@@ -107,19 +107,19 @@ public class Repair implements Serializable {
         this.servicedate = servicedate;
     }
 
-    public String getStatus() {
+    public RepairStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+        public void setStatus(RepairStatus status) {
         this.status = status;
     }
 
-    public String getType() {
+    public RepairType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(RepairType type) {
         this.type = type;
     }
 

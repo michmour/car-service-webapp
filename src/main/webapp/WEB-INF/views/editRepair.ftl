@@ -25,25 +25,16 @@
                         </div>
 
 
-                        <div class="form-group">
-                            <label for="status">Status</label>
-                            <select name="status">
-                                <option class="form-control" value="${repairForm.status}" selected>
 
-                                </option>
-                                <option value="PENDING" <#if repairForm.type=="PENDING">selected</#if>>PENDING</option>
-                                <option value="IN PROGRESS" <#if repairForm.type=="IN PROGRESS">selected</#if>>IN PROGRESS</option>
-                                <option value="COMPLETED" <#if repairForm.type=="COMPLETED">selected</#if>>COMPLETED</option>
-                            </select>
+                        <div class="form-group">
+                             <label for="status">Status</label>
+                             <@spring.formSingleSelect path="repairForm.status" options=repairStatusList attributes='class="form-control"'/>
                         </div>
 
 
                         <div class="form-group">
-                            <label for="type">Type</label>
-                            <select name="type">
-                                <option value="SMALL" <#if repairForm.type=="SMALL">selected</#if>>SMALL</option>
-                                <option value="BIG" <#if repairForm.type=="BIG">selected</#if>>BIG</option>
-                            </select>
+                             <label for="status">Type</label>
+                             <@spring.formSingleSelect path="repairForm.type" options=repairTypeList attributes='class="form-control"'/>
                         </div>
 
                         <div class="form-group">

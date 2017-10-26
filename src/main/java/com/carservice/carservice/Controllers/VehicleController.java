@@ -3,6 +3,7 @@ package com.carservice.carservice.Controllers;
 import com.carservice.carservice.Converters.VehicleConverter;
 import com.carservice.carservice.Domain.User;
 import com.carservice.carservice.Domain.Vehicle;
+import com.carservice.carservice.Domain.VehicleBrands;
 import com.carservice.carservice.Models.VehicleForm;
 import com.carservice.carservice.Services.UserService;
 import com.carservice.carservice.Services.VehicleService;
@@ -18,7 +19,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class VehicleController {
@@ -43,8 +47,10 @@ public class VehicleController {
 
     @GetMapping("/admin/vehicles/add")
     public String vehicleAddForm(Model model) {
+
         List<User> usersList= userService.findAll();
         model.addAttribute(VEHICLE_FORM, new VehicleForm());
+        model.addAttribute("vehicleBrandsList",getVehicleBrandsList());
         model.addAttribute("usersList", usersList);
         return "addVehicle";
     }
@@ -52,30 +58,9 @@ public class VehicleController {
     @GetMapping("/admin/vehicles/{id}/edit")
     public String vehicleEditForm(Model model, @PathVariable(value = "id") Long vehicleid, @ModelAttribute(VEHICLE_FORM)VehicleForm vehicleForm ) {
 
-        // model.addAttribute("user", vehicleid);
-//            Vehicle userList= vehicleService.findOne(vehicleid);
-//
-//            String name= userList.getName();
-//            String surname=  userList.getSurname();
-//            String email=  userList.getEmail();
-//            String password=  userList.getPassword();
-//            String ssn=  userList.getSsn();
-//            String address=  userList.getAddress();
-//            String usertype= userList.getUsertype();
-//            List<Vehicle> servicescollection=  userList.getServicescollection();
-//
-//
-//            vehicleForm.setName(name);
-//            vehicleForm.setSurname(surname);
-//            vehicleForm.setEmail(email);
-//            vehicleForm.setPassword(password);
-//            vehicleForm.setSsn(ssn);
-//            vehicleForm.setAddress(address);
-//            vehicleForm.setUserid(vehicleid);
-//            vehicleForm.setUsertype(usertype);
-//            vehicleForm.setServicescollection(servicescollection);
-
         model.addAttribute(VEHICLE_FORM, vehicleService.findOne(vehicleid) );
+        model.addAttribute("vehicleBrandsList",getVehicleBrandsList());
+
         return "editVehicle";
     }
 
@@ -136,6 +121,15 @@ public class VehicleController {
 
         return "redirect:/admin/vehicles";
 
+
+        }
+
+
+
+    private Map<String, String> getVehicleBrandsList() {
+        Map<String, String> vehicleBrandsMap = new LinkedHashMap<>();
+        Arrays.stream(VehicleBrands.values()).forEach(vehicleBrands -> vehicleBrandsMap.put(vehicleBrands.name(), vehicleBrands.getVehiclebrands()));
+        return vehicleBrandsMap;
     }
 //    @PostMapping("/repairs")
 //    public void add(@Valid @RequestBody Vehicle user) {

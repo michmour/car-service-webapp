@@ -3,18 +3,25 @@ package com.carservice.carservice.Domain;
 public enum VehicleBrands {
 
 
-                Default,
-                Alfa_Romeo,
-                Nissan,
-                Toyota,
-                Volkswagen,
-                Seat,
-                Mercedes,
-                Mazda,
-                Honda,
-                Opel,
-                Citroen
+                ALFA_ROMEO("Alfa_Romeo"),
+                NISSAN("Nissan"),
+                TOYOTA("Toyota"),
+                VW("Volkswagen"),
+                MERCEDES("Mercedes"),
+                MAZDA("Mazda"),
+                OPEL("Opel");
 
+                private String vehicleBrands;
 
-//     ${T(com.carservice.Enum.Brands).values()}
+    VehicleBrands(String vehicleBrands) {
+        this.vehicleBrands = vehicleBrands;
+    }
+
+    public String getVehiclebrands() {
+        return vehicleBrands;
+    }
+
+    public void setVehiclebrands(String vehiclebrands) {
+        this.vehicleBrands = vehiclebrands;
+    }
 }

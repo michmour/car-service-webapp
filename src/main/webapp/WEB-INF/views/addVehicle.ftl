@@ -20,8 +20,8 @@
                     <form action="/admin/vehicles" method="post" id="userForm" name="addVehicle">
 
                         <div class="form-group">
-                            <label for="vehiclemodel">Vehicle Model</label>
-                            <input type="text" class="form-control" name="vehiclemodel" id="vehiclemodel" placeholder="Vehicle Model"/>
+                             <label for="vehiclemodel">Model</label>
+                             <@spring.formSingleSelect path="vehicleForm.model" options=vehicleBrandsList attributes='class="form-control"'/>
                         </div>
 
 
@@ -43,16 +43,18 @@
 
 
                     <#if usersList??>
+                    <div class="form-group">
                         <label for="userelid">Select User</label>
 
 
-                        <select name="userelid">
+                        <select name="userelid" class="form-control">
 
                             <#list usersList as userValues>
                                 <option value="${userValues.userid}">${userValues.name}</option>
                             </#list>
 
                         </select>
+                        </div>
 
                     </#if>
 

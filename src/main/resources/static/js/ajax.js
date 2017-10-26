@@ -17,9 +17,12 @@
 
 
              var table = $("#location");
+             var tableCode = '';
                 $.each(data, function(idx, elem){
-                    table.append("<tr><td>"+elem.ssn+"</td> <td>"+elem.surname+"</td></tr>");
+                  table.append("<tr><td>"+elem.ssn+"</td> <td>"+elem.surname+"</td></tr>");
                 });
+
+             table.html(tableCode);
 
 
   //          var trHTML = '';

@@ -23,23 +23,17 @@
                             <input type="datetime-local" class="form-control" name="servicedate" id="servicedate"/>
                         </div>
 
-
                         <div class="form-group">
                             <label for="status">Status</label>
-                            <select name="status">
-                                <option value="PENDING">PENDING</option>
-                                <option value="IN PROGRESS">IN PROGRESS</option>
-                                <option value="COMPLETED">COMPLETED</option>
-                            </select>
+                             <@spring.formSingleSelect path="repairForm.status" options=repairStatusList attributes='class="form-control"'/>
+
                         </div>
 
 
                         <div class="form-group">
                             <label for="type">Type</label>
-                            <select name="type">
-                                <option value="SMALL">SMALL</option>
-                                <option value="BIG">BIG</option>
-                            </select>
+                            <@spring.formSingleSelect path="repairForm.type" options=repairTypeList attributes='class="form-control"'/>
+
                         </div>
 
                         <div class="form-group">
@@ -48,17 +42,19 @@
                         </div>
 
                     <#if usersList??>
+                      <div class="form-group">
+
                         <label for="userelid">Select User</label>
 
 
-                        <select name="userelid">
+                        <select name="userelid" class="form-control">
 
                             <#list usersList as userValues>
                                 <option value="${userValues.userid}">${userValues.name}</option>
                             </#list>
 
                         </select>
-
+                        </div>
                     </#if>
 
                         <div class="form-group">
