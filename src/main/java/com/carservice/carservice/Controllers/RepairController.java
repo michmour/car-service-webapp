@@ -100,7 +100,7 @@ public class RepairController {
 
 
 
-        //    redirectAttributes.addFlashAttribute("message", "You have sucessfully completed registration");
+            redirectAttributes.addFlashAttribute("message", "You have sucessfully completed a Vehicle registration");
             return "redirect:/admin/repairs";
 
         }
@@ -120,6 +120,7 @@ public class RepairController {
                 repairService.save(repair);
               //  session.setAttribute("name", repairForm.getName());
 
+            redirectAttributes.addFlashAttribute("message", "You have sucessfully edited a Repair");
             return "redirect:/admin/repairs";
 
         }
@@ -138,6 +139,7 @@ public class RepairController {
                 repairService.delete(repairToDelete);
           //      session.setAttribute("name", repairForm.getName());
 
+            redirectAttributes.addFlashAttribute("message", "You have sucessfully deleted a Repair");
             return "redirect:/admin/repairs";
 
         }

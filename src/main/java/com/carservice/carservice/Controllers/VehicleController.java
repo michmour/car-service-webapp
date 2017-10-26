@@ -79,7 +79,7 @@ public class VehicleController {
 
 
 
-        //    redirectAttributes.addFlashAttribute("message", "You have sucessfully completed registration");
+        redirectAttributes.addFlashAttribute("message", "You have sucessfully completed a Vehicle registration");
         return "redirect:/admin/vehicles";
 
     }
@@ -101,6 +101,7 @@ public class VehicleController {
         vehicleService.save(vehicle);
         //  session.setAttribute("name", vehicleForm.getName());
 
+        redirectAttributes.addFlashAttribute("message", "You have sucessfully edited a Vehicle");
         return "redirect:/admin/vehicles";
 
     }
@@ -119,6 +120,7 @@ public class VehicleController {
         vehicleService.delete(vehicleToDelete);
         //      session.setAttribute("name", vehicleForm.getName());
 
+        redirectAttributes.addFlashAttribute("message", "You have sucessfully deleted a Vehicle");
         return "redirect:/admin/vehicles";
 
 

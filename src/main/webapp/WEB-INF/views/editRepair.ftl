@@ -39,12 +39,12 @@
 
                         <div class="form-group">
                             <label for="servicecost">Service Cost</label>
-                            <input type="number" class="form-control" name="servicecost" id="servicecost" value="${repairForm.servicecost}" placeholder="servicecost"/>
+                            <input type="number" pattern="^[0-9]*$" class="form-control" name="servicecost" id="servicecost" value="${repairForm.servicecost}" placeholder="servicecost"/>
                         </div>
 
                         <div class="form-group">
                             <label for="details">Details</label>
-                            <input type="text" class="form-control" name="details" id="details" value="${repairForm.details}" placeholder="details"/>
+                            <input type="text" pattern="^[a-zA-Z0-9@#$%^&]*$" class="form-control" name="details" id="details" value="${repairForm.details}" placeholder="details"/>
                         </div>
 
                         <input type="hidden" name="serviceid" value="${repairForm.serviceid}"/>

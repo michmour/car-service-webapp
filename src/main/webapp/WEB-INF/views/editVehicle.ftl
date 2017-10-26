@@ -27,18 +27,18 @@
 
                         <div class="form-group">
                             <label for="colour">Colour</label>
-                            <input type="text" class="form-control" name="colour" id="colour" value="${vehicleForm.colour}" placeholder="Vehicle Colour"/>
+                            <input type="text" pattern="^[a-zA-Z ]*$" class="form-control" name="colour" id="colour" value="${vehicleForm.colour}" placeholder="Vehicle Colour"/>
                         </div>
 
                         <div class="form-group">
                             <label for="year">Model Year</label>
-                            <input type="text" class="form-control" name="year" id="year" value="${vehicleForm.year}" placeholder="Enter Year"/>
+                            <input type="text" pattern="^[0-9]{4}$" class="form-control" name="year" id="year" value="${vehicleForm.year}" placeholder="Enter Year"/>
                         </div>
 
 
                         <div class="form-group">
                             <label for="platenumber">Plate Number</label>
-                            <input type="text" class="form-control" name="platenumber" id="platenumber" value="${vehicleForm.platenumber}" placeholder="Plate Number"/>
+                            <input type="text" pattern="^([A-Z]{3})-\d{4}$" class="form-control" name="platenumber" id="platenumber" value="${vehicleForm.platenumber}" placeholder="Plate Number"/>
                         </div>
 
 

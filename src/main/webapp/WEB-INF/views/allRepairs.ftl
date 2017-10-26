@@ -17,6 +17,9 @@
                         All Repairs
                     </h1>
 
+                <#if message??>
+                    <p class="alert alert-success">${message}</p>
+                </#if>
 
                     <table class="table table-bordered table-hover">
                     <#if repairs??>

@@ -97,7 +97,7 @@ public class UserController {
 
 
 
-
+        redirectAttributes.addFlashAttribute("message", "You have sucessfully edited a User");
         return "redirect:/admin/users";
 
     }
@@ -115,6 +115,8 @@ public class UserController {
 
             userService.delete(userToDelete);
 
+
+        redirectAttributes.addFlashAttribute("message", "You have sucessfully deleted a User");
         return "redirect:/admin/users";
 
     }

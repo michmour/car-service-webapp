@@ -22,34 +22,34 @@
 
                         <div class="form-group">
                             <label for="name">First Name</label>
-                            <input type="text" class="form-control" name="name" id="name" value="${userForm.name}" placeholder="name"/>
+                            <input type="text" class="form-control" pattern="^[a-zA-Z ]*$" name="name" id="name" value="${userForm.name}" placeholder="name"/>
                         </div>
 
 
                         <div class="form-group">
                             <label for="surname">Last Name</label>
-                            <input type="text"class="form-control" name="surname" id="name"  value="${userForm.surname}" placeholder="surname"/>
+                            <input type="text"class="form-control" pattern="^[a-zA-Z ]*$" name="surname" id="name"  value="${userForm.surname}" placeholder="surname"/>
                         </div>
 
 
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" name="password" id="password" value="${userForm.password}" placeholder="password"/>
+                            <input type="password" class="form-control" pattern="^[a-zA-Z0-9@#$%^&]*$" name="password" id="password" value="${userForm.password}" placeholder="password"/>
                         </div>
 
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" value="${userForm.email}" placeholder="email"/>
+                            <input type="email" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" class="form-control" name="email" id="email" value="${userForm.email}" placeholder="email"/>
                         </div>
 
                         <div class="form-group">
                             <label for="ssn">Ssn</label>
-                            <input type="text" class="form-control" name="ssn" id="ssn" value="${userForm.ssn}" placeholder="ssn"/>
+                            <input type="text" class="form-control" pattern="^[0-9]{9}$" name="ssn" id="ssn" value="${userForm.ssn}" placeholder="ssn"/>
                         </div>
 
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <input type="text" class="form-control" name="address" id="address" value="${userForm.address}" placeholder="address"/>
+                            <input type="text" pattern="^[a-zA-Z0-9]*$" class="form-control" name="address" id="address" value="${userForm.address}" placeholder="address"/>
                         </div>
 
                         <input type="hidden" name="usertype" value="${userForm.usertype}"/>

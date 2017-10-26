@@ -36,6 +36,10 @@
                         </thead>
                     <tbody>
 
+                        <#if message??>
+                        <p class="alert alert-success">${message}</p>
+                        </#if>
+
                         <#list users as user>
 
                         <tr>
