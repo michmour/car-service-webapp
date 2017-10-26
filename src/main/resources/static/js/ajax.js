@@ -1,52 +1,134 @@
+var SEARCH_USER = '/admin/search/users';
 
-	$(document).ready(function(){
-       $('#searchbutton').click(function(){
-        jQuery.support.cors = true;
+jQuery.support.cors = true;
 
-        $.ajax(
-        {
-            type: "GET",
-            url: '/admin/search/users',
-            data: "[]",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
+var SearchUser = (function(window, $){
+
+    var $userTitles = $('#location thead');
+    var $searchResultsTable = $('#location tbody');
+
+    var fetchResults = function ( keyword, callback ) {
+        var options = {
+            url: SEARCH_USER,
+            method: 'GET',
             cache: false,
-            success: function (data) {
-
-			console.log("Success: ", data);
-
-
-             var table = $("#location");
-             var tableCode = '';
-                $.each(data, function(idx, elem){
-                  table.append("<tr><td>"+elem.ssn+"</td> <td>"+elem.surname+"</td></tr>");
-                });
-
-             table.html(tableCode);
-
-
-  //          var trHTML = '';
-
-//            $.each(data.surname, function (i, item) {
-//                trHTML += '<tr><td>' + item + '</td><td>' + data.ssn[i] + '</td></tr>';
-//            });
-//
-//            $('#location').append(trHTML);
-
-
-
-//            $('#location').append(
-//
-//                $.map(data.surname, function (surname, index) {
-//                    return '<tr><td>' + surname + '</td><td>' + data.ssn[index] + '</td></tr>';
-//            }).join());
-
-            },
-
-            error: function (msg) {
-
-                alert(msg.responseText);
-            }
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            data: keyword || []
+        };
+        $.ajax(options)
+        .done(function(response){
+            callback && callback(response);
+        })
+        .fail(function(response) {
+            callback && callback(response);
         });
-    });
-    });
+    };
+
+    var printResults = function ( data ) {
+        data = data || [];
+
+
+
+
+        var tableCode = '';
+        data.forEach(function( person ){
+
+            tableCode += ("<tr><td>"+person.ssn+"</td><td>"+person.surname+"</td><td>");
+        });
+
+        $userTitles.html('<tr><th>Ssn</th><th>Surname</th></tr>');
+
+
+        $searchResultsTable.html(tableCode);
+    };
+
+    var search = function ( keyword ) {
+        fetchResults( keyword, printResults );
+    };
+
+    return {
+		ajax: fetchResults,
+		print: printResults,
+        search: search
+    };
+
+})(this, jQuery);
+
+$(document).on('click', '#searchuserbutton', function (){
+SearchUser.search(null);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+var SEARCH_REPAIR = '/admin/search/repairs';
+
+jQuery.support.cors = true;
+
+var SearchRepair = (function(window, $){
+
+
+    var $repairTitles = $('#location thead');
+    var $searchResultsTable = $('#location tbody');
+
+    var fetchResults = function ( keyword, callback ) {
+        var options = {
+            url: SEARCH_REPAIR,
+            method: 'GET',
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            data: keyword || []
+        };
+        $.ajax(options)
+        .done(function(response){
+            callback && callback(response);
+        })
+        .fail(function(response) {
+            callback && callback(response);
+        });
+    };
+
+
+
+    var printResults = function ( data ) {
+        data = data || [];
+
+
+
+        var tableCode = '';
+        data.forEach(function( repair ){
+            tableCode += ("<tr><td>"+repair.serviceid+"</td><td>"+repair.servicedate+"</td><td>"+repair.type+"</td><td>"+"<div class=\"btn-group\" role=\"group\"> " +
+              "<button type=\"button\" class=\"btn btn-default btn-sm\" href=\"repairs/" +repair.serviceid+ "/edit"+"\">Edit </button>" +
+             "<button type=\"button\" class=\"btn btn-danger btn-sm\" href=repairs/" +repair.serviceid+ "/delete"+"\">Delete </button>"+"</td></tr>");
+        });
+
+        $repairTitles.html('<tr><th>ID</th><th>Date</th><th>Type</th><th>Actions</th></tr>');
+
+        $searchResultsTable.html(tableCode);
+    };
+
+    var search = function ( keyword ) {
+        fetchResults( keyword, printResults );
+    };
+
+    return {
+		ajax: fetchResults,
+		print: printResults,
+        search: search
+    };
+
+})(this, jQuery);
+
+$(document).on('click', '#searchrepairbutton', function (){
+SearchRepair.search(null);
+});

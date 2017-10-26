@@ -34,6 +34,10 @@ public class RepairServiceImpl implements RepairService {
         return repairRepository.findAll();
     }
 
+    @Override
+    public List<Repair> searchAll() {
+        return repairRepository.findAll();
+    }
 
     @Override
     public Page<Repair> getTenRepairs() {

@@ -1,6 +1,8 @@
 package com.carservice.carservice.Domain;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -24,9 +26,11 @@ public class Repair implements Serializable {
     private Long serviceid;
 
 
+    @JsonFormat(pattern = "dd/MM/yyyy KK:mm a")
     @Column(name = "servicedate")
     private LocalDateTime servicedate;
 
+    @JsonIgnore
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private RepairStatus status;
@@ -36,22 +40,27 @@ public class Repair implements Serializable {
     private RepairType type;
 
     //@Digits(integer=10, fraction=2)
+    @JsonIgnore
     @Column(name = "servicecost")
     private int servicecost;
 
+    @JsonIgnore
     @Column(name = "details")
     private String details;
 
+    @JsonIgnore
     @Column(name = "createdAt",nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
     private Date createdAt;
 
+    @JsonIgnore
     @Column(name = "updatedAt",nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date updatedAt;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="userelid",referencedColumnName= "userid")
     private User userelid;

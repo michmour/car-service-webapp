@@ -17,6 +17,8 @@ public interface RepairService {
 
     List<Repair> findAll();
 
+    List<Repair> searchAll();
+
     Repair findOne(Long serviceid);
 
     void delete(Repair user);
