@@ -13,9 +13,13 @@ import java.util.List;
 @Repository
 public interface VehicleRepository extends JpaRepository<Vehicle,Long> {
 
+
+
     List<Vehicle> findAll();
 
-    // List<Repair> findOne(@Param("serviceid")long serviceid);
+    List<Vehicle> findByUserelid_SsnStartingWith(String ssn);
+
+    List<Vehicle> findByPlatenumberStartingWith(String platenumber);
 
     @Query("SELECT userelid FROM Vehicle WHERE vehicleid = :vehicleid")
     User findOneUserId(@Param("vehicleid")Long vehicleid);

@@ -44,7 +44,7 @@
 
                         <div class="form-group">
                             <label for="details">Details</label>
-                            <input type="text" pattern="^[a-zA-Z0-9@#$%^&]*$" class="form-control" name="details" id="details" value="${repairForm.details}" placeholder="details"/>
+                            <input type="text"  class="form-control" name="details" id="details" value="${repairForm.details}" placeholder="details"/>
                         </div>
 
                         <input type="hidden" name="serviceid" value="${repairForm.serviceid}"/>

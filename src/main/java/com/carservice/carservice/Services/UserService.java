@@ -16,7 +16,11 @@ public interface UserService {
 
     User findUserByEmail(String email);
 
-    List<User> searchAll();
+    List<User> searchByEmail(String email);
+
+    List<User> searchBySsn(String ssn);
+
+
 
     //LOGIN-LOGOUT
 

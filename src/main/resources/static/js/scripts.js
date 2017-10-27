@@ -28,3 +28,11 @@ $("body").prepend(div_box);
 $('#load-screen').delay(700).fadeOut(600, function(){
    $(this).remove();
 });
+
+$(document).ready(function()
+{
+    setTimeout(function() {
+        $('#flash-message-id').fadeOut('slow,swing');
+        }, 2000); // <-- time in milliseconds
+
+});

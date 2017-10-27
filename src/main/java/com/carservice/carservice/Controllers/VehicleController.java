@@ -75,7 +75,6 @@ public class VehicleController {
 
         Vehicle vehicle = VehicleConverter.buildVehicleObject(vehicleForm);
         vehicleService.save(vehicle);
-        //   session.setAttribute("name", vehicleForm.getName());
 
 
 
@@ -89,9 +88,6 @@ public class VehicleController {
                                BindingResult bindingResult, HttpSession session,
                                RedirectAttributes redirectAttributes) {
 
-//            Vehicle userList= vehicleService.findOne(vehicleid);
-//            List<Vehicle> servicescollection=  userList.getServicescollection();
-//            vehicleForm.setServicescollection(servicescollection);
 
         if (bindingResult.hasErrors()) {
             return "index";
@@ -99,7 +95,6 @@ public class VehicleController {
         vehicleForm.setUserelid(vehicleService.findOneUserId(vehicleid));
         Vehicle vehicle = VehicleConverter.buildVehicleObject(vehicleForm);
         vehicleService.save(vehicle);
-        //  session.setAttribute("name", vehicleForm.getName());
 
         redirectAttributes.addFlashAttribute("message", "You have sucessfully edited a Vehicle");
         return "redirect:/admin/vehicles";
@@ -118,7 +113,6 @@ public class VehicleController {
         }
 
         vehicleService.delete(vehicleToDelete);
-        //      session.setAttribute("name", vehicleForm.getName());
 
         redirectAttributes.addFlashAttribute("message", "You have sucessfully deleted a Vehicle");
         return "redirect:/admin/vehicles";
@@ -133,28 +127,4 @@ public class VehicleController {
         Arrays.stream(VehicleBrands.values()).forEach(vehicleBrands -> vehicleBrandsMap.put(vehicleBrands.name(), vehicleBrands.getVehiclebrands()));
         return vehicleBrandsMap;
     }
-//    @PostMapping("/repairs")
-//    public void add(@Valid @RequestBody Vehicle user) {
-//
-//    }
-
-//    @GetMapping("/get/{id}")
-//    public @ResponseBody ResponseEntity<String>
-//    findById(@PathVariable String id) {
-//        return new ResponseEntity<String>("GET Response : "
-//                + id, HttpStatus.OK);
-//    }
-
-//    @GetMapping("/repairs/{id}")
-//    public String findById(Model model,@PathVariable(value = "id") Long vehicleid) {
-//
-//        List<Vehicle> usersList= vehicleService.findOne(vehicleid);
-//
-//        model.addAttribute("repairs", usersList);
-//        return  "index";
-////        if(user == null) {
-////            return ResponseEntity.notFound().build();
-////        }
-////        return ResponseEntity.ok().body(user);
-//    }
 }

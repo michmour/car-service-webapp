@@ -1,5 +1,6 @@
 package com.carservice.carservice.Domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -12,6 +13,7 @@ import java.util.Date;
 @Table(name="vehicle")
 @EntityListeners(AuditingEntityListener.class)
 public class Vehicle implements Serializable {
+
 
     @Id
     @Column(name = "vehicleid", nullable = false)
@@ -33,32 +35,24 @@ public class Vehicle implements Serializable {
     @Column(name = "colour")
     private String colour;
 
+    @JsonIgnore
     @Column(name = "createdAt", nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
     private Date createdAt;
 
+    @JsonIgnore
     @Column(name = "updatedAt", nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date updatedAt;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userelid", referencedColumnName = "userid")
     private User userelid;
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof Repair)) return false;
-//
-//        return serviceid != null && serviceid.equals(((Repair) o).serviceid);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return getUserRelid().hashCode();
-//    }
+
 
     public Vehicle() {
 

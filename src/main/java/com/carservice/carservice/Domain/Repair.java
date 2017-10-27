@@ -30,7 +30,6 @@ public class Repair implements Serializable {
     @Column(name = "servicedate")
     private LocalDateTime servicedate;
 
-    @JsonIgnore
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private RepairStatus status;
@@ -40,11 +39,10 @@ public class Repair implements Serializable {
     private RepairType type;
 
     //@Digits(integer=10, fraction=2)
-    @JsonIgnore
+
     @Column(name = "servicecost")
     private int servicecost;
 
-    @JsonIgnore
     @Column(name = "details")
     private String details;
 
@@ -65,27 +63,10 @@ public class Repair implements Serializable {
     @JoinColumn(name="userelid",referencedColumnName= "userid")
     private User userelid;
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof Repair)) return false;
-//
-//        return serviceid != null && serviceid.equals(((Repair) o).serviceid);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return getUserRelid().hashCode();
-//    }
 
     public Repair() {
 
     }
-
-
-//        @OneToMany(mappedBy="userid",targetEntity= Vehicle.class)
-//        private Set<Vehicle> vehiclescollection;
-
 
 
     public Repair(Long serviceid, LocalDateTime servicedate, RepairStatus status, RepairType type, int servicecost, String details, Date createdAt, Date updatedAt, User userelid) {

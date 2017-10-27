@@ -1,6 +1,7 @@
 package com.carservice.carservice.Repositories;
 
 import com.carservice.carservice.Domain.User;
+import com.carservice.carservice.Domain.Vehicle;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,38 +11,21 @@ import java.util.List;
 import java.util.Optional;
 
 
-@Repository
-
-   // @RepositoryRestResource(collectionResourceRel = "user", path = "user")
-
+    @Repository
     public interface UserRepository extends JpaRepository<User, Long> {
 
-       // List<User> findByLastName(@Param("name") String name);
 
-       // List<User> findAll();
 
         User findUserByEmail(String email);
 
-
         User findByEmailAndPassword(String email, String password);
-
 
         List<User> findAll();
 
-//        @Query("SELECT surname FROM User WHERE userid = :userid")
-//        String findSurnameById(@Param("userid") Long userid);
-//
-//        @Query("SELECT email FROM User WHERE userid = :userid")
-//        String findEmailById(@Param("userid") Long userid);
-//
-//        @Query("SELECT password FROM User WHERE userid = :userid")
-//        String findPasswordById(@Param("userid") Long userid);
-//
-//        @Query("SELECT ssn FROM User WHERE userid = :userid")
-//        String findSsnById(@Param("userid") Long userid);
-//
-//        @Query("SELECT address FROM User WHERE userid = :userid")
-//        String findAddressById(@Param("userid") Long userid);
+        List<User> findByEmailStartingWith(String email);
+
+        List<User> findBySsnStartingWith(String ssn);
+
 
         void delete(User user);
 

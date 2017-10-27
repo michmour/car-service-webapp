@@ -18,7 +18,6 @@ import java.util.Set;
     @EntityListeners(AuditingEntityListener.class)
     public class User implements Serializable {
 
-        @JsonIgnore
         @Id
         @Column(name = "userid", nullable = false)
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +26,6 @@ import java.util.Set;
         @Column(name = "ssn", unique=true)
         private String ssn;
 
-        @JsonIgnore
         @Column(name = "name")
         private String name;
 
@@ -35,11 +33,9 @@ import java.util.Set;
         @Column(name = "surname")
         private String surname;
 
-        @JsonIgnore
         @Column(name = "address")
         private String address;
 
-        @JsonIgnore
         @Column(name = "email", unique=true)
         private String email;
 
@@ -63,23 +59,13 @@ import java.util.Set;
         @LastModifiedDate
         private Date updatedAt;
 
-        @JsonIgnore
         @OneToMany(cascade={CascadeType.REMOVE}, mappedBy="userelid",orphanRemoval = true)
         private List<Repair>servicescollection;
 
-        @JsonIgnore
+
         @OneToMany(cascade={CascadeType.REMOVE}, mappedBy="userelid",orphanRemoval = true)
         private List<Vehicle>vehiclescollection;
 
-//        public void addServicesCollection(Repair servicecollection) {
-//            servicescollection.add(servicecollection);
-//            servicecollection.setUserelid(this);
-//        }
-//
-//        public void removeServicesCollection(Repair servicecollection) {
-//            servicescollection.remove(servicecollection);
-//            servicecollection.setUserelid(null);
-//        }
 
         public User() {
 
@@ -99,11 +85,6 @@ import java.util.Set;
             this.servicescollection = servicescollection;
             this.vehiclescollection = vehiclescollection;
         }
-
-
-
-//        @OneToMany(mappedBy="userid",targetEntity= Vehicle.class)
-//        private Set<Vehicle> vehiclescollection;
 
 
 
@@ -204,27 +185,4 @@ import java.util.Set;
             this.vehiclescollection = vehiclescollection;
         }
 
-        //        public void setServicescollection(List<Repair> servicescollection) {
-//            if (this.servicescollection == null) {
-//                this.servicescollection = servicescollection;
-//            } else {
-//                this.servicescollection.retainAll(servicescollection);
-//                this.servicescollection.addAll(servicescollection);
-//            }
-//        }
-//        @Override
-//        public String toString() {
-//            String result = String.format(
-//                    "Category[id=%d, name='%s']%n",
-//                    userid, name);
-//            if (servicescollection != null) {
-//                for(Repair servicecollection : servicescollection) {
-//                    result += String.format(
-//                            "Service[id=%d, details='%s']%n",
-//                            servicecollection.getServiceid(), servicecollection.getDetails());
-//                }
-//            }
-//
-//            return result;
-//        }
     }

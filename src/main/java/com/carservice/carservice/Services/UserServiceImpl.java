@@ -31,8 +31,15 @@ import java.util.Set;
         }
 
         @Override
-        public List<User> searchAll() {
-            return userRepository.findAll();
+        public List<User> searchByEmail(String email){
+
+            return userRepository.findByEmailStartingWith(email);
+        }
+
+        @Override
+        public List<User> searchBySsn(String ssn){
+
+            return userRepository.findBySsnStartingWith(ssn);
         }
 
         @Override

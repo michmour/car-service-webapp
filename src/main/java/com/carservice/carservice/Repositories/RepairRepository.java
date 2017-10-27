@@ -15,18 +15,17 @@ import java.util.List;
 
 
 @Repository
-//@RepositoryRestResource(collectionResourceRel = "repair", path = "repair")
 public interface RepairRepository extends JpaRepository<Repair, Long> {
 
     List<Repair> findAll();
 
-  //  Page<Repair> findPagingAll(Pageable pageRequest);
 
     @Query("SELECT userelid FROM Repair WHERE serviceid = :serviceid")
     User findOneUserId(@Param("serviceid")long serviceid);
 
 
-  //  PageRequest firstTenRepairs = new PageRequest(0, 10, Sort.Direction.ASC, "servicedate");
+    List<Repair> findByUserelid_SsnStartingWith(String ssn);
+
 
 
 }

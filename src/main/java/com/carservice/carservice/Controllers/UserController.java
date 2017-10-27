@@ -127,30 +127,4 @@ public class UserController {
         return "searchUser";
     }
 
-
-//    @PostMapping("/users")
-//    public void add(@Valid @RequestBody User user) {
-//
-//    }
-
-//    @GetMapping("/get/{id}")
-//    public @ResponseBody ResponseEntity<String>
-//    findById(@PathVariable String id) {
-//        return new ResponseEntity<String>("GET Response : "
-//                + id, HttpStatus.OK);
-//    }
-
-//    @GetMapping("/users/{id}")
-//    public String findById(Model model,@PathVariable(value = "id") Long userid) {
-//
-//        List<User> usersList= userService.findOne(userid);
-//
-//        model.addAttribute("users", usersList);
-//        return  "index";
-////        if(user == null) {
-////            return ResponseEntity.notFound().build();
-////        }
-////        return ResponseEntity.ok().body(user);
-//    }
-
 }

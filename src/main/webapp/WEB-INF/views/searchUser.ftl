@@ -22,36 +22,31 @@
                         <div class="col-lg-6">
                             <label>Email Search</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search by EMAIL">
-                                <span class="input-group-btn">
-                                    <button id="searchuserbutton" class="btn btn-secondary" type="button">Go!</button>
-                                </span>
-                            </div>
-                        </div>
+                                <input  type="text" id="searchInput" class="form-control" placeholder="Search">
 
-                        <div class="col-lg-6">
-                            <label>SSN Search</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search by SSN">
-                                <span class="input-group-btn">
-                                    <button id="searchrepairbutton" class="btn btn-secondary" type="button">Go!</button>
-                                </span>
-                            </div>
-                        </div>
+                                 <label>Search Categories</label>
+                                <select id="CategoryId" class="form-control" >
+                                  <option value="ownerssn" selected>Owner by Social Security Number</option>
+                                  <option value="owneremail">Owner by Email</option>
+                                  <option value="repairssn">Repairs by Social Security Number</option>
+                                  <option value="vehicleplate">Vehicle by Plate Number</option>
+                                  <option value="vehiclessn">Vehicles by Social Security Number</option>
+                                </select>
+                                <div class="input-group">
+                                <label>Search Repairs by Date</label>
+                                <input  type="datetime-local" id="searchDate" class="form-control">
+                           </div>
+                             </div>
+
+                        <br>
 
                         <br>
                         <table id="location" class="table table-bordered table-hover">
-                        <thead>
-                                                <tr>
-                                                    <th>ssn</th>
-                                                    <th>surname</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                </tbody>
-
-                                            </table>
-
+                            <thead>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                         </table>
 
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 package com.carservice.carservice.Services;
 
+import com.carservice.carservice.Domain.Repair;
 import com.carservice.carservice.Domain.User;
 import com.carservice.carservice.Domain.Vehicle;
 import com.carservice.carservice.Repositories.VehicleRepository;
@@ -17,6 +18,8 @@ public class VehicleServiceImpl implements VehicleService {
         @Autowired
         private VehicleRepository vehicleRepository;
 
+
+
         @Override
         public User findOneUserId(Long vehicleid){return vehicleRepository.findOneUserId(vehicleid);}
 
@@ -28,6 +31,16 @@ public class VehicleServiceImpl implements VehicleService {
         @Override
         public Vehicle findOne(Long userid){ return vehicleRepository.findOne(userid);}
 
+
+        @Override
+        public List<Vehicle> searchPlate(String platenumber) {
+                return vehicleRepository.findByPlatenumberStartingWith(platenumber);
+        }
+
+        @Override
+        public List<Vehicle> searchVehicleByPlate(String ssn) {
+                return vehicleRepository.findByUserelid_SsnStartingWith(ssn);
+        }
 
         @Override
         public void delete(Vehicle user){  vehicleRepository.delete(user);}

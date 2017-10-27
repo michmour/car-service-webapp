@@ -6,7 +6,6 @@ import com.carservice.carservice.Repositories.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,6 +36,11 @@ public class RepairServiceImpl implements RepairService {
     @Override
     public List<Repair> searchAll() {
         return repairRepository.findAll();
+    }
+
+    @Override
+    public List<Repair> searchRepairsBySsn(String ssn) {
+        return repairRepository.findByUserelid_SsnStartingWith(ssn);
     }
 
     @Override

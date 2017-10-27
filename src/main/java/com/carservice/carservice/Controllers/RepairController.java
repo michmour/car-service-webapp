@@ -156,32 +156,7 @@ public class RepairController {
         return repairTypeMap;
     }
 
-
-//    @PostMapping("/repairs")
-//    public void add(@Valid @RequestBody Repair user) {
-//
-//    }
-
-//    @GetMapping("/get/{id}")
-//    public @ResponseBody ResponseEntity<String>
-//    findById(@PathVariable String id) {
-//        return new ResponseEntity<String>("GET Response : "
-//                + id, HttpStatus.OK);
-//    }
-
-//    @GetMapping("/repairs/{id}")
-//    public String findById(Model model,@PathVariable(value = "id") Long serviceid) {
-//
-//        List<Repair> usersList= repairService.findOne(serviceid);
-//
-//        model.addAttribute("repairs", usersList);
-//        return  "index";
-////        if(user == null) {
-////            return ResponseEntity.notFound().build();
-////        }
-////        return ResponseEntity.ok().body(user);
-//    }
-    }
+}
 
 
 

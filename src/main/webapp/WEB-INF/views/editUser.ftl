@@ -49,7 +49,7 @@
 
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <input type="text" pattern="^[a-zA-Z0-9]*$" class="form-control" name="address" id="address" value="${userForm.address}" placeholder="address"/>
+                            <input type="text" class="form-control" name="address" id="address" value="${userForm.address}" placeholder="address"/>
                         </div>
 
                         <input type="hidden" name="usertype" value="${userForm.usertype}"/>

@@ -3,9 +3,6 @@ package com.carservice.carservice.Services;
 import com.carservice.carservice.Domain.Repair;
 import com.carservice.carservice.Domain.User;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-
 import java.util.List;
 
 public interface RepairService {
@@ -20,6 +17,8 @@ public interface RepairService {
     List<Repair> searchAll();
 
     Repair findOne(Long serviceid);
+
+    List<Repair> searchRepairsBySsn(String ssn);
 
     void delete(Repair user);
 

@@ -59,7 +59,7 @@
 
                         <div class="form-group">
                             <label for="details">Details</label>
-                            <input type="text" pattern="^[a-zA-Z0-9@#$%^&]*$" class="form-control" name="details" id="details" placeholder="details"/>
+                            <input type="text" class="form-control" name="details" id="details" placeholder="details"/>
                         </div>
 
 

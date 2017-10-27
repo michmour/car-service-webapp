@@ -37,7 +37,7 @@
                     <tbody>
 
                         <#if message??>
-                        <p class="alert alert-success">${message}</p>
+                        <p id= "flash-message-id" class="alert alert-success">${message}</p>
                         </#if>
 
                         <#list users as user>
