@@ -15,10 +15,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.validation.ConstraintValidatorContext;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -82,8 +80,7 @@ public class UserController {
             session.setAttribute("username", userForm.getEmail());
 
         } catch (Exception handleUserException) {
-//            redirectAttributes.addFlashAttribute("errorMessage",  handleUserException.getMessage());
-//            logger.error("User registration failed: " + handleUserException);
+            logger.error("User registration failed: " + handleUserException);
             redirectAttributes.addFlashAttribute("errorMessage", "User registration failed");
             return "redirect:/admin/users/add";
 
@@ -114,8 +111,7 @@ public class UserController {
             session.setAttribute("username", userForm.getEmail());
 
         } catch (Exception handleUserException) {
-//            redirectAttributes.addFlashAttribute("errorMessage",  handleUserException.getMessage());
-//            logger.error("User edit failed: " + handleUserException);
+            logger.error("User edit failed: " + handleUserException);
             redirectAttributes.addFlashAttribute("errorMessage", "User edit failed");
             return "redirect:/admin/users";
 

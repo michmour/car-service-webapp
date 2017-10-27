@@ -16,7 +16,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -78,8 +77,7 @@ public class VehicleController {
             session.setAttribute("username", vehicleForm.getPlatenumber());
 
         } catch (Exception handleVehicleException) {
-//            redirectAttributes.addFlashAttribute("errorMessage", handleVehicleException.getMessage());
-//            logger.error("Vehicle add failed: " + handleVehicleException);
+            logger.error("Vehicle add failed: " + handleVehicleException);
             redirectAttributes.addFlashAttribute("errorMessage", "Plate Number Already Exists");
             return "redirect:/admin/vehicles/add";
         }
@@ -109,8 +107,7 @@ public class VehicleController {
             session.setAttribute("username", vehicleForm.getPlatenumber());
 
         } catch (Exception handleVehicleException) {
-//            redirectAttributes.addFlashAttribute("errorMessage", handleVehicleException.getMessage());
-//            logger.error("Vehicle edit failed: " + handleVehicleException);
+            logger.error("Vehicle edit failed: " + handleVehicleException);
             redirectAttributes.addFlashAttribute("errorMessage", "Plate Number Already Exists");
             return "redirect:/admin/vehicles";
         }

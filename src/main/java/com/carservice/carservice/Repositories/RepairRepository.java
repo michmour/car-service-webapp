@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -25,6 +26,9 @@ public interface RepairRepository extends JpaRepository<Repair, Long> {
 
 
     List<Repair> findByUserelid_SsnStartingWith(String ssn);
+
+
+   // List<Repair> findAllByDatetimeBetween(LocalDateTime servicedate);
 
 
 

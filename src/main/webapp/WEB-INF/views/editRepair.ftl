@@ -51,7 +51,7 @@
 
 
                         <div class="form-group">
-                            <button type="submit">Edit Repair</button>
+                            <button type="submit" class="btn btn-primary">Edit Repair</button>
                         </div>
 
                     </form>

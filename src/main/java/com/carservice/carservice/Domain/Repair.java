@@ -13,6 +13,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.Future;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.Date;
 
 @Entity
@@ -152,7 +153,6 @@ public class Repair implements Serializable {
     public void setUserelid(User userelid) {
         this.userelid = userelid;
     }
-
 
 
 }
