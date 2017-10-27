@@ -4,19 +4,20 @@ import com.carservice.carservice.Converters.VehicleConverter;
 import com.carservice.carservice.Domain.User;
 import com.carservice.carservice.Domain.Vehicle;
 import com.carservice.carservice.Domain.VehicleBrands;
+import com.carservice.carservice.Exceptions.AlreadySameException;
 import com.carservice.carservice.Models.VehicleForm;
 import com.carservice.carservice.Services.UserService;
 import com.carservice.carservice.Services.VehicleService;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Arrays;
@@ -28,6 +29,8 @@ import java.util.Map;
 public class VehicleController {
 
     private static final String VEHICLE_FORM = "vehicleForm";
+    private static final String ERROR = "error";
+    private final static org.slf4j.Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private VehicleService vehicleService;
@@ -73,8 +76,18 @@ public class VehicleController {
             return "addVehicle";
         }
 
-        Vehicle vehicle = VehicleConverter.buildVehicleObject(vehicleForm);
-        vehicleService.save(vehicle);
+
+
+        try {
+            Vehicle vehicle = VehicleConverter.buildVehicleObject(vehicleForm);
+            vehicleService.save(vehicle);
+            session.setAttribute("username", vehicleForm.getPlatenumber());
+
+        } catch (Exception handleVehicleException) {
+            redirectAttributes.addFlashAttribute("errorMessage", handleVehicleException.getMessage());
+            logger.error("User registration failed: " + handleVehicleException);
+            return "redirect:/admin/vehicles/add";
+        }
 
 
 
@@ -92,9 +105,14 @@ public class VehicleController {
         if (bindingResult.hasErrors()) {
             return "index";
         }
-        vehicleForm.setUserelid(vehicleService.findOneUserId(vehicleid));
-        Vehicle vehicle = VehicleConverter.buildVehicleObject(vehicleForm);
-        vehicleService.save(vehicle);
+
+
+
+
+            vehicleForm.setUserelid(vehicleService.findOneUserId(vehicleid));
+            Vehicle vehicle = VehicleConverter.buildVehicleObject(vehicleForm);
+            vehicleService.save(vehicle);
+
 
         redirectAttributes.addFlashAttribute("message", "You have sucessfully edited a Vehicle");
         return "redirect:/admin/vehicles";
@@ -126,5 +144,12 @@ public class VehicleController {
         Map<String, String> vehicleBrandsMap = new LinkedHashMap<>();
         Arrays.stream(VehicleBrands.values()).forEach(vehicleBrands -> vehicleBrandsMap.put(vehicleBrands.name(), vehicleBrands.getVehiclebrands()));
         return vehicleBrandsMap;
+    }
+
+
+    @ExceptionHandler({AlreadySameException.class})
+    public RedirectView handleVehicleException(AlreadySameException e, HttpServletRequest request, RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute(ERROR, e.getMessage());
+        return new RedirectView("/admin/vehicles/add");
     }
 }

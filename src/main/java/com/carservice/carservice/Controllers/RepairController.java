@@ -5,23 +5,20 @@ import com.carservice.carservice.Domain.Repair;
 import com.carservice.carservice.Domain.RepairStatus;
 import com.carservice.carservice.Domain.RepairType;
 import com.carservice.carservice.Domain.User;
+import com.carservice.carservice.Exceptions.AlreadySameException;
 import com.carservice.carservice.Models.RepairForm;
 import com.carservice.carservice.Services.RepairService;
 import com.carservice.carservice.Services.UserService;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.*;
@@ -32,6 +29,9 @@ public class RepairController {
 
 
         private static final String REPAIR_FORM = "repairForm";
+        private static final String ERROR = "error";
+        private final static org.slf4j.Logger logger = LoggerFactory.getLogger(UserController.class);
+
 
         @Autowired
         private RepairService repairService;
@@ -94,9 +94,21 @@ public class RepairController {
                 return "addRepair";
             }
 
-                Repair repair = RepairConverter.buildRepairObject(repairForm);
-                repairService.save(repair);
+
              //   session.setAttribute("name", repairForm.getName());
+
+            try {
+                Repair repair = RepairConverter.buildRepairObject(repairForm);
+                session.setAttribute("username", repairForm.getDetails());
+                repairService.save(repair);
+
+
+            } catch (Exception handleRepairException) {
+                redirectAttributes.addFlashAttribute("errorMessage", handleRepairException.getMessage());
+                logger.error("User registration failed: " + handleRepairException);
+                return "redirect:/admin/repairs/add";
+
+            }
 
 
 
@@ -156,6 +168,11 @@ public class RepairController {
         return repairTypeMap;
     }
 
+    @ExceptionHandler({AlreadySameException.class})
+    public RedirectView handleRepairException(AlreadySameException e, HttpServletRequest request, RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute(ERROR, e.getMessage());
+        return new RedirectView("/admin/repairs/add");
+    }
 }
 
 
