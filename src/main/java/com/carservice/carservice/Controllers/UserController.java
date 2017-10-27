@@ -80,8 +80,6 @@ public class UserController {
         }
 
 
-
-
         try {
             User user = UserConverter.buildUserObject(userForm);
             userService.save(user);
@@ -112,11 +110,20 @@ public class UserController {
             return "index";
         }
 
+
+        try {
             User user = UserConverter.buildUserObject(userForm);
             userService.save(user);
+            session.setAttribute("username", userForm.getEmail());
 
+        } catch (Exception handleUserException) {
+            redirectAttributes.addFlashAttribute("errorMessage",  handleUserException.getMessage());
+            logger.error("User edit failed: " + handleUserException);
+            return "redirect:/admin/users/add";
 
+        }
 
+        
         redirectAttributes.addFlashAttribute("message", "You have sucessfully edited a User");
         return "redirect:/admin/users";
 

@@ -85,7 +85,7 @@ public class VehicleController {
 
         } catch (Exception handleVehicleException) {
             redirectAttributes.addFlashAttribute("errorMessage", handleVehicleException.getMessage());
-            logger.error("User registration failed: " + handleVehicleException);
+            logger.error("Vehicle add failed: " + handleVehicleException);
             return "redirect:/admin/vehicles/add";
         }
 
@@ -107,11 +107,17 @@ public class VehicleController {
         }
 
 
-
-
+        try {
             vehicleForm.setUserelid(vehicleService.findOneUserId(vehicleid));
             Vehicle vehicle = VehicleConverter.buildVehicleObject(vehicleForm);
             vehicleService.save(vehicle);
+            session.setAttribute("username", vehicleForm.getPlatenumber());
+
+        } catch (Exception handleVehicleException) {
+            redirectAttributes.addFlashAttribute("errorMessage", handleVehicleException.getMessage());
+            logger.error("Vehicle edit failed: " + handleVehicleException);
+            return "redirect:/admin/vehicles/add";
+        }
 
 
         redirectAttributes.addFlashAttribute("message", "You have sucessfully edited a Vehicle");

@@ -105,7 +105,7 @@ public class RepairController {
 
             } catch (Exception handleRepairException) {
                 redirectAttributes.addFlashAttribute("errorMessage", handleRepairException.getMessage());
-                logger.error("User registration failed: " + handleRepairException);
+                logger.error("Repair add failed: " + handleRepairException);
                 return "redirect:/admin/repairs/add";
 
             }
