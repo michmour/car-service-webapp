@@ -75,10 +75,6 @@ public class UserController {
                           BindingResult bindingResult, HttpSession session,
                           RedirectAttributes redirectAttributes) {
 
-        if (bindingResult.hasErrors()) {
-            return "addUser";
-        }
-
 
         try {
             User user = UserConverter.buildUserObject(userForm);
@@ -86,8 +82,9 @@ public class UserController {
             session.setAttribute("username", userForm.getEmail());
 
         } catch (Exception handleUserException) {
-            redirectAttributes.addFlashAttribute("errorMessage",  handleUserException.getMessage());
-            logger.error("User registration failed: " + handleUserException);
+//            redirectAttributes.addFlashAttribute("errorMessage",  handleUserException.getMessage());
+//            logger.error("User registration failed: " + handleUserException);
+            redirectAttributes.addFlashAttribute("errorMessage", "User registration failed");
             return "redirect:/admin/users/add";
 
         }
@@ -117,8 +114,9 @@ public class UserController {
             session.setAttribute("username", userForm.getEmail());
 
         } catch (Exception handleUserException) {
-            redirectAttributes.addFlashAttribute("errorMessage",  handleUserException.getMessage());
-            logger.error("User edit failed: " + handleUserException);
+//            redirectAttributes.addFlashAttribute("errorMessage",  handleUserException.getMessage());
+//            logger.error("User edit failed: " + handleUserException);
+            redirectAttributes.addFlashAttribute("errorMessage", "User edit failed");
             return "redirect:/admin/users";
 
         }

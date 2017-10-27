@@ -17,9 +17,13 @@
                         All Vehicles
                     </h1>
 
-                    <#if message??>
-                        <p  id= "flash-message-id" class="alert alert-success">${message}</p>
-                    </#if>
+                <#if message??>
+                    <p id= "flash-message-id" class="alert alert-success">${message}</p>
+                </#if>
+
+                <#if errorMessage ??>
+                    <p id= "flash-message-id" class="alert alert-danger">${errorMessage }</p>
+                </#if>
 
                     <table class="table table-bordered table-hover">
                     <#if vehiclesList??>

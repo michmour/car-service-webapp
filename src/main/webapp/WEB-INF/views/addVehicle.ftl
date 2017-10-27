@@ -17,11 +17,15 @@
                         Add Vehicle
                     </h1>
 
+                <#if errorMessage ??>
+                    <p id= "flash-message-id" class="alert alert-danger">${errorMessage }</p>
+                </#if>
+
                     <form action="/admin/vehicles" method="post" id="userForm" name="addVehicle">
 
                         <div class="form-group">
                              <label for="vehiclemodel">Model</label>
-                             <@spring.formSingleSelect path="vehicleForm.model" options=vehicleBrandsList attributes='class="form-control"'/>
+                             <@spring.formSingleSelect path="vehicleForm.vehiclemodel" options=vehicleBrandsList attributes='class="form-control"'/>
                         </div>
 
 

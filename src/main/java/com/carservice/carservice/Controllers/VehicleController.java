@@ -72,20 +72,15 @@ public class VehicleController {
                           BindingResult bindingResult, HttpSession session,
                           RedirectAttributes redirectAttributes) {
 
-        if (bindingResult.hasErrors()) {
-            return "addVehicle";
-        }
-
-
-
         try {
             Vehicle vehicle = VehicleConverter.buildVehicleObject(vehicleForm);
             vehicleService.save(vehicle);
             session.setAttribute("username", vehicleForm.getPlatenumber());
 
         } catch (Exception handleVehicleException) {
-            redirectAttributes.addFlashAttribute("errorMessage", handleVehicleException.getMessage());
-            logger.error("Vehicle add failed: " + handleVehicleException);
+//            redirectAttributes.addFlashAttribute("errorMessage", handleVehicleException.getMessage());
+//            logger.error("Vehicle add failed: " + handleVehicleException);
+            redirectAttributes.addFlashAttribute("errorMessage", "Plate Number Already Exists");
             return "redirect:/admin/vehicles/add";
         }
 
@@ -114,8 +109,9 @@ public class VehicleController {
             session.setAttribute("username", vehicleForm.getPlatenumber());
 
         } catch (Exception handleVehicleException) {
-            redirectAttributes.addFlashAttribute("errorMessage", handleVehicleException.getMessage());
-            logger.error("Vehicle edit failed: " + handleVehicleException);
+//            redirectAttributes.addFlashAttribute("errorMessage", handleVehicleException.getMessage());
+//            logger.error("Vehicle edit failed: " + handleVehicleException);
+            redirectAttributes.addFlashAttribute("errorMessage", "Plate Number Already Exists");
             return "redirect:/admin/vehicles";
         }
 
