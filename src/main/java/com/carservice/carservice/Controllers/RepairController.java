@@ -95,7 +95,6 @@ public class RepairController {
             }
 
 
-             //   session.setAttribute("name", repairForm.getName());
 
             try {
                 Repair repair = RepairConverter.buildRepairObject(repairForm);
@@ -130,7 +129,6 @@ public class RepairController {
                 repairForm.setUserelid(repairService.findOneUserId(serviceid));
                 Repair repair = RepairConverter.buildRepairObject(repairForm);
                 repairService.save(repair);
-              //  session.setAttribute("name", repairForm.getName());
 
             redirectAttributes.addFlashAttribute("message", "You have sucessfully edited a Repair");
             return "redirect:/admin/repairs";
@@ -149,7 +147,6 @@ public class RepairController {
             }
 
                 repairService.delete(repairToDelete);
-          //      session.setAttribute("name", repairForm.getName());
 
             redirectAttributes.addFlashAttribute("message", "You have sucessfully deleted a Repair");
             return "redirect:/admin/repairs";
