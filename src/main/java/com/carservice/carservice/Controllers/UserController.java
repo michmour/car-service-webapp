@@ -119,11 +119,11 @@ public class UserController {
         } catch (Exception handleUserException) {
             redirectAttributes.addFlashAttribute("errorMessage",  handleUserException.getMessage());
             logger.error("User edit failed: " + handleUserException);
-            return "redirect:/admin/users/add";
+            return "redirect:/admin/users";
 
         }
 
-        
+
         redirectAttributes.addFlashAttribute("message", "You have sucessfully edited a User");
         return "redirect:/admin/users";
 

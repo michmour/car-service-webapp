@@ -116,7 +116,7 @@ public class VehicleController {
         } catch (Exception handleVehicleException) {
             redirectAttributes.addFlashAttribute("errorMessage", handleVehicleException.getMessage());
             logger.error("Vehicle edit failed: " + handleVehicleException);
-            return "redirect:/admin/vehicles/add";
+            return "redirect:/admin/vehicles";
         }
 
 
