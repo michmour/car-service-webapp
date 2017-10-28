@@ -32,10 +32,7 @@
                                   <option value="vehicleplate">Vehicle by Plate Number</option>
                                   <option value="vehiclessn">Vehicles by Social Security Number</option>
                                 </select>
-                                <div class="input-group">
-                                <label>Search Repairs by Date</label>
-                                <input  type="datetime-local" id="searchDate" class="form-control">
-                           </div>
+
                              </div>
 
                         <br>

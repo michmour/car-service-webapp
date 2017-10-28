@@ -50,7 +50,7 @@
                         <select name="userelid" class="form-control">
 
                             <#list usersList as userValues>
-                                <option value="${userValues.userid}">${userValues.name}</option>
+                                <option value="${userValues.userid}">${userValues.name} ${userValues.surname}</option>
                             </#list>
 
                         </select>
